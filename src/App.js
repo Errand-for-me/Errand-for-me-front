@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import styled from "styled-components";
+
+import CommonHeader from './components/header';
+import Sidebar from './components/sidebar';
+
+import Hamburger from './images/hamburger.png';
+
+const StyledHamburger = styled.img`
+  position: fixed;
+  padding: 10px;
+  margin: 20px;
+  margin-top: 60px;
+  padding-height: 60px;
+  background-color: white;
+  border-radius: 50px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  box-shadow: 2px 5px 5px rgb(0 0 0 / 50%);
+  z-index: 2;
+`;
 
 function App() {
+  const [SidebarState, toggleSidebarState] = useState('none');
+
+  const toggle = () => {
+    if (SidebarState === 'none') {
+      toggleSidebarState('flex');
+    }
+    else toggleSidebarState('none');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <StyledHamburger src={Hamburger} onClick={toggle} />
+      <CommonHeader />
+      <Sidebar displayType={SidebarState} />
     </div>
   );
 }
