@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import './App.css';
+
 import CommonHeader from './components/header';
 import Sidebar from './components/sidebar';
+import HotBullet from './components/main';
+import AdsArea from './components/advertisement';
 
 import Hamburger from './images/hamburger.png';
 
@@ -10,7 +14,8 @@ const StyledHamburger = styled.img`
   position: fixed;
   padding: 10px;
   margin: 20px;
-  margin-top: 60px;
+  margin-top: 85vh;
+  margin-left: 76vw;
   padding-height: 60px;
   background-color: white;
   border-radius: 50px;
@@ -36,6 +41,8 @@ function App() {
       <StyledHamburger src={Hamburger} onClick={toggle} />
       <CommonHeader />
       <Sidebar displayType={SidebarState} />
+      <AdsArea />
+      <HotBullet />
     </div>
   );
 }

@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route } from "react-router-dom"
 import './index.css';
 import App from './App';
+import Map from './components/map';
+import BulletinBoard from './components/bulletin';
+import Quest from './components/quest';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Route path="/bulletin" component={BulletinBoard} />
+      <Route path="/quest" component={Quest} />
+      <Route path="/map" component={Map} />
+      <Route exact path="/" component={App} />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import ChatImage from "../../images/chat.png";
+import BulletImage from "../../images/bullet.svg";
 import SettingImage from "../../images/settings.png";
-import GroupImage from "../../images/group.png";
+import AskImage from "../../images/ask.svg";
 
 const StyledSidebar = styled.div`
   background-color: rgb(40, 45, 78);
@@ -31,9 +31,9 @@ const Sidebar = (props) => {
   return (
     <StyledSidebar className='sidebar' display={props}>
       <StyledDiv>
-        <StyledMenu src={ChatImage} ></StyledMenu>
         <StyledMenu src={SettingImage}></StyledMenu>
-        <StyledMenu src={GroupImage}></StyledMenu>
+        <StyledMenu src={BulletImage} ></StyledMenu>
+        <StyledMenu src={AskImage}></StyledMenu>
       </StyledDiv>
     </StyledSidebar>
   );
