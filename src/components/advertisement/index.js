@@ -12,7 +12,7 @@ const Ads = styled.div`
   border-radius: 20px;
 `;
 
-const AdsArea = (props) => {
+const AdsArea = () => {
   return (
     <Ads className='Ads'>
       광고 영역

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BulletImage from "../../images/bullet.svg";
 import MapImage from "../../images/map.svg";
 import AskImage from "../../images/ask.svg";
+import { useHistory } from 'react-router-dom';
 
 const ButtonsContainer = styled.div`
   margin: auto;
@@ -42,12 +43,18 @@ const StyledMenu = styled.img`
 const weekArr = ["곽진현 머함", "한달만에 가능?", "대충해야 됨ㅋㅋ", "spring 어렵누", "할거 너무 많누", "SAT", "SUN", "MON", "TUE", "WED", "THU"];
 
 const HotBullet = () => {
+  const history = useHistory();
+
+  const RoutePage = (url) => {
+    history.push('/' + url);
+  };
+
   return (
     <HotBulletin className='hotBulletins'>
       <ButtonsContainer>
-        <StyledMenu src={BulletImage} ></StyledMenu>
-        <StyledMenu src={AskImage}></StyledMenu>
-        <StyledMenu src={MapImage}></StyledMenu>
+        <StyledMenu src={BulletImage} onClick={() => {RoutePage('bulletin')}}></StyledMenu>
+        <StyledMenu src={AskImage} onClick={() => {RoutePage('quest')}}></StyledMenu>
+        <StyledMenu src={MapImage} onClick={() => {RoutePage('map')}}></StyledMenu>
       </ButtonsContainer>
       <HotBulletinContainer>
         <HotBulletinHeader>Hot 게시판!!</HotBulletinHeader>
