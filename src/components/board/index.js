@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import { useHistory } from 'react-router-dom';
 import styled from "styled-components";
 
 import CommonHeader from '../header';
+
+import PlusImg from '../../images/plus.svg';
 
 const weekArr = ["곽진현 머함", "한달만에 가능?", "대충해야 됨ㅋㅋ", "spring 어렵누", "할거 너무 많누", "SAT", "SUN", "MON", "TUE", "WED", "THU"];
 
@@ -23,9 +26,32 @@ const HotBulletinContent = styled.div`
   margin: 10px;
 `
 
-function BulletinBoard() {
+const StyledPlus = styled.img`
+  position: fixed;
+  padding: 10px;
+  margin: 20px;
+  margin-top: 85vh;
+  margin-left: 76vw;
+  padding-height: 60px;
+  background-color: white;
+  border-radius: 50px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  box-shadow: 2px 5px 5px rgb(0 0 0 / 50%);
+  z-index: 2;
+`;
+
+function Board() {
+  const history = useHistory();
+
+  const WritePage = () => {
+    history.push('/bulletin/write');
+  };
+
   return (
     <div className="App">
+      <StyledPlus src={PlusImg} onClick={WritePage} />
       <CommonHeader />
       <HotBulletinContainer>
         <HotBulletinHeader>전체 게시판!!</HotBulletinHeader>
@@ -39,4 +65,4 @@ function BulletinBoard() {
   );
 }
 
-export default BulletinBoard;
+export { Board };
