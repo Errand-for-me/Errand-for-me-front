@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import styled from "styled-components";
 
 import CommonHeader from '../header';
+import BulletList from './bullet-list';
 
 import PlusImg from '../../images/plus.svg';
-
-const weekArr = ["곽진현 머함", "한달만에 가능?", "대충해야 됨ㅋㅋ", "spring 어렵누", "할거 너무 많누", "SAT", "SUN", "MON", "TUE", "WED", "THU"];
 
 const HotBulletinContainer = styled.div`
   width: 80vw;
@@ -22,9 +21,7 @@ const HotBulletinHeader = styled.div`
   font-weight: bold;
 `
 
-const HotBulletinContent = styled.div`
-  margin: 10px;
-`
+
 
 const StyledPlus = styled.img`
   position: fixed;
@@ -49,17 +46,30 @@ function Board() {
     history.push('/bulletin/write');
   };
 
+  let [bulletList, setBoard] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await fetch('http://localhost:8080/board', {
+        mode: 'cors',
+      });
+      
+      const data = await result.json();
+      setBoard(data);
+      console.log('get', data)
+      console.log('prop', bulletList)
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
       <StyledPlus src={PlusImg} onClick={WritePage} />
       <CommonHeader />
       <HotBulletinContainer>
         <HotBulletinHeader>전체 게시판!!</HotBulletinHeader>
-        {
-          weekArr.map((val, idx) => {
-            return <HotBulletinContent key={idx}> {val} </HotBulletinContent>
-          })
-        }
+        <BulletList data={bulletList} />
       </HotBulletinContainer>
     </div>
   );
