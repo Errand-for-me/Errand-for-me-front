@@ -35,6 +35,14 @@ const Sidebar = (props) => {
         <StyledMenu src={BulletImage} ></StyledMenu>
         <StyledMenu src={AskImage}></StyledMenu>
       </StyledDiv>
+      <div>
+        <button>
+          로그인
+        </button>
+        <button>
+          회원가입
+        </button>
+      </div>
     </StyledSidebar>
   );
 }
