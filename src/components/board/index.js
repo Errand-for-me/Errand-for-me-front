@@ -21,8 +21,6 @@ const HotBulletinHeader = styled.div`
   font-weight: bold;
 `
 
-
-
 const StyledPlus = styled.img`
   position: fixed;
   padding: 10px;
@@ -46,7 +44,7 @@ function Board() {
     history.push('/bulletin/write');
   };
 
-  let [bulletList, setBoard] = useState([]);
+  const [bulletList, setBoard] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -56,21 +54,21 @@ function Board() {
       
       const data = await result.json();
       setBoard(data);
-      console.log('get', data)
-      console.log('prop', bulletList)
     };
 
     fetchData();
   }, []);
 
   return (
-    <div className="App">
+    <div className="bullet-board">
       <StyledPlus src={PlusImg} onClick={WritePage} />
       <CommonHeader />
       <HotBulletinContainer>
         <HotBulletinHeader>전체 게시판!!</HotBulletinHeader>
-        <BulletList data={bulletList} />
+        <BulletList data={bulletList}/>
       </HotBulletinContainer>
+      <div>
+      </div>
     </div>
   );
 }
