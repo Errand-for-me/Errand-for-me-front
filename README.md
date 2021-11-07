@@ -9,10 +9,8 @@ Spring boot에 관심을 가지고 공부하고 적용해보기 위해 지인 �
 해당 repository는 프로젝트 중 프론트엔드 부분을 작업한 repository입니다. 본 프로젝트는 모바일 환경 접속만을 가정하고 작업하였습니다.
 
 ### 기술 스택
-![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=SpringBoot&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-%234479A1?style=flat&logo=MySQL&logoColor=white)
-![Git](https://img.shields.io/badge/Git-%23F05032?style=flat&logo=Git&logoColor=white) ![Github Actions](https://img.shields.io/badge/Github%20Actions-%232088FF?style=flat&logo=Github%20Actions&logoColor=white) ![](https://img.shields.io/badge/nCloud-%2303C75A?style=flat-square&logo=naver&logoColor=white)
+
+![TypeScript](https://img.shields.io/badge/TypeScript-%233178C6?style=flat&logo=TypeScript&logoColor=white) ![React](https://img.shields.io/badge/React-%2361DAFB?style=flat&logo=React&logoColor=white) ![Git](https://img.shields.io/badge/Git-%23F05032?style=flat&logo=Git&logoColor=white) ![Github Actions](https://img.shields.io/badge/Github%20Actions-%232088FF?style=flat&logo=Github%20Actions&logoColor=white) ![](https://img.shields.io/badge/nCloud-%2303C75A?style=flat-square&logo=naver&logoColor=white)
 
 ### 화면 예시
 
