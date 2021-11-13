@@ -7,7 +7,8 @@ import PlusImg from "../../images/plus.svg";
 import QuestList from "./quest-list";
 
 const HotBulletinContainer = styled.div`
-  width: 80vw;
+  width: 90vw;
+  text-align: center;
   margin: auto;
   margin-top: 20px;
   border-radius: 20px;
@@ -47,12 +48,11 @@ function Quest() {
 
   useEffect(() => {
     async function fetchData() {
-      // const result = await fetch('http://localhost:8080/board', {
-      //   mode: 'cors',
-      // });
+      const result = await fetch("http://localhost:8080/quest", {
+        mode: "cors",
+      });
 
-      // const data = await result.json();
-      const data = ["퀘스트1", "퀘스트2", "퀘스트3"];
+      const data = await result.json();
       setQuest(data);
     }
 
@@ -64,7 +64,7 @@ function Quest() {
       <StyledPlus src={PlusImg} onClick={WritePage} />
       <CommonHeader />
       <HotBulletinContainer>
-        <HotBulletinHeader>전체 게시판!!</HotBulletinHeader>
+        <HotBulletinHeader>심부름 찾기</HotBulletinHeader>
       </HotBulletinContainer>
       <QuestList data={questList} />
     </div>

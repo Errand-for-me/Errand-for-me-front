@@ -1,0 +1,36 @@
+.quest-card {
+  display: flex;
+  margin: 10px;
+  background-color: #e9ecef;
+}
+
+.card-img {
+  margin: auto;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.details {
+  width: 80vw;
+}
+
+.title {
+  margin: 10px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.info-container {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+}
+
+.people {
+  flex-grow: 1;
+}
+
+.writer {
+  text-align: right;
+  flex-grow: 1;
+}
