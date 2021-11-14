@@ -6,7 +6,7 @@ function QuestWrite() {
   return (
     <div className="write">
       <CommonHeader />
-      <form className="container" action="http://localhost:8080/quest" method="POST" encType="multipart/form-data">
+      <form className="container" action={`${process.env.REACT_APP_SERVER_IP}/quest`} method="POST" encType="multipart/form-data">
         <div className="input-container">
           제목
           <input className="head" id="head" name="title" type="text" placeholder="제목" />

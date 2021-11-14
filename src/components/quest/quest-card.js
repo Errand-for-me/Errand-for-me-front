@@ -7,7 +7,7 @@ function QuestCard(props) {
 
   return (
     <div className="quest-card">
-      <img className="card-img" src={`http://localhost:8080/img/${imageURL}`} width="50px" height="50px" />
+      <img className="card-img" src={`${process.env.REACT_APP_SERVER_IP}/img/${imageURL}`} width="50px" height="50px" />
       <div className="details">
         <div className="title"> {title} </div>
         <div className="info-container">
