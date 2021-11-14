@@ -48,7 +48,7 @@ function Quest() {
 
   useEffect(() => {
     async function fetchData() {
-      const result = await fetch("http://localhost:8080/quest", {
+      const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/quest`, {
         mode: "cors",
       });
 

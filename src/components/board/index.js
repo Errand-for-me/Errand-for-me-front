@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-import CommonHeader from '../header';
-import BulletList from './bullet-list';
+import CommonHeader from "../header";
+import BulletList from "./bullet-list";
 
-import PlusImg from '../../images/plus.svg';
+import PlusImg from "../../images/plus.svg";
 
 const HotBulletinContainer = styled.div`
   width: 80vw;
@@ -13,13 +13,13 @@ const HotBulletinContainer = styled.div`
   margin-top: 20px;
   border-radius: 20px;
   border: solid 1px;
-`
+`;
 
 const HotBulletinHeader = styled.div`
   margin: 10px;
   font-size: 20px;
   font-weight: bold;
-`
+`;
 
 const StyledPlus = styled.img`
   position: fixed;
@@ -41,20 +41,20 @@ function Board() {
   const history = useHistory();
 
   const WritePage = () => {
-    history.push('/bulletin/write');
+    history.push("/bulletin/write");
   };
 
   const [bulletList, setBoard] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const result = await fetch('http://localhost:8080/board', {
-        mode: 'cors',
+      const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/board`, {
+        mode: "cors",
       });
-      
+
       const data = await result.json();
       setBoard(data);
-    };
+    }
 
     fetchData();
   }, []);
@@ -65,10 +65,9 @@ function Board() {
       <CommonHeader />
       <HotBulletinContainer>
         <HotBulletinHeader>전체 게시판!!</HotBulletinHeader>
-        <BulletList data={bulletList}/>
+        <BulletList data={bulletList} />
       </HotBulletinContainer>
-      <div>
-      </div>
+      <div></div>
     </div>
   );
 }
