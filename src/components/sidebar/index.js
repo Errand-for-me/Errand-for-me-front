@@ -3,6 +3,7 @@ import BulletImage from "../../images/bullet.svg";
 import SettingImage from "../../images/settings.png";
 import AskImage from "../../images/ask.svg";
 import { useHistory } from "react-router-dom";
+import GoogleLogin from "react-google-login";
 
 const StyledSidebar = styled.div`
   background-color: rgb(40, 45, 78);
@@ -51,6 +52,38 @@ const StyledSignUp = styled.div`
   border-radius: 10px;
 `;
 
+const googleLogin = async (response) => {
+  // login 로직 구현
+  const option = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "post",
+    data: {
+      accessToken: response.accessToken,
+    },
+    url: this.serverHost + "/auth/googleLogin",
+  };
+
+  try {
+    return await fetch(option);
+  } catch (e) {
+    throw e;
+  }
+};
+
+const onFailure = (response) => {
+  console.log(response);
+};
+
+const googleURL = `https://accounts.google.com/o/oauth2/v2/auth?`;
+const scope = `scope=https%253A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly`;
+const responseType = `&response_type=id_token`;
+const redirectURL = `&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fauth`;
+const CLIENT_ID = `&client_id=${process.env.REACT_APP_OAUTH_CLIENT_ID}`;
+
+const oauthURL = googleURL + scope + redirectURL + CLIENT_ID + responseType;
+
 const Sidebar = (props) => {
   const history = useHistory();
 
@@ -66,6 +99,8 @@ const Sidebar = (props) => {
         <StyledMenu src={AskImage}></StyledMenu>
       </StyledDiv>
       <StyledDiv2>
+        <a href={oauthURL}>로그인 하기</a>
+        <GoogleLogin clientId={process.env.REACT_APP_OAUTH_CLIENT_ID} buttonText="Login" onSuccess={googleLogin} onFailure={onFailure} />
         <StyledSignIn
           onClick={() => {
             routePage("sign-in");
