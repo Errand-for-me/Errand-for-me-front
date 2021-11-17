@@ -11,6 +11,8 @@ import { Board } from "./components/board";
 import BulletinWrite from "./components/bulletin-write";
 import Quest from "./components/quest";
 import QuestWrite from "./components/quest-write";
+import SignInPage from "./components/sign-in";
+import SignUpPage from "./components/sign-up";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +22,8 @@ ReactDOM.render(
       <Route exact path="/quest" component={Quest} />
       <Route exact path="/quest/write" component={QuestWrite} />
       <Route exact path="/map" component={Map} />
+      <Route exact path="/sign-up" component={SignUpPage} />
+      <Route exact path="/sign-in" component={SignInPage} />
       <Route exact path="/" component={App} />
     </BrowserRouter>
   </React.StrictMode>,

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BulletImage from "../../images/bullet.svg";
 import SettingImage from "../../images/settings.png";
 import AskImage from "../../images/ask.svg";
+import { useHistory } from "react-router-dom";
 
 const StyledSidebar = styled.div`
   background-color: rgb(40, 45, 78);
@@ -9,7 +10,7 @@ const StyledSidebar = styled.div`
   height: 92vh;
   position: fixed;
   z-index: 1;
-  display: ${props => props.display.displayType};
+  display: ${(props) => props.display.displayType};
 `;
 
 const StyledMenu = styled.img`
@@ -22,29 +23,66 @@ const StyledMenu = styled.img`
 
 const StyledDiv = styled.div`
   display: flex;
+  width: 20vw;
   flex-direction: column-reverse;
   background-color: rgb(32, 37, 64);
 `;
 
+const StyledDiv2 = styled.div`
+  display: flex;
+  width: 80vw;
+  flex-direction: column;
+`;
+
+const StyledSignIn = styled.div`
+  background-color: #fff;
+  text-align: center;
+  margin: 10px;
+  margin-top: 10%;
+  padding: 10px;
+  border-radius: 10px;
+`;
+
+const StyledSignUp = styled.div`
+  background-color: #fff;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+`;
 
 const Sidebar = (props) => {
+  const history = useHistory();
+
+  const routePage = (url) => {
+    history.push(`/${url}`);
+  };
+
   return (
-    <StyledSidebar className='sidebar' display={props}>
+    <StyledSidebar className="sidebar" display={props}>
       <StyledDiv>
         <StyledMenu src={SettingImage}></StyledMenu>
-        <StyledMenu src={BulletImage} ></StyledMenu>
+        <StyledMenu src={BulletImage}></StyledMenu>
         <StyledMenu src={AskImage}></StyledMenu>
       </StyledDiv>
-      <div>
-        <button>
+      <StyledDiv2>
+        <StyledSignIn
+          onClick={() => {
+            routePage("sign-in");
+          }}
+        >
           로그인
-        </button>
-        <button>
+        </StyledSignIn>
+        <StyledSignUp
+          onClick={() => {
+            routePage("sign-up");
+          }}
+        >
           회원가입
-        </button>
-      </div>
+        </StyledSignUp>
+      </StyledDiv2>
     </StyledSidebar>
   );
-}
+};
 
 export default Sidebar;
