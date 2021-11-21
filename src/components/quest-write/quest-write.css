@@ -68,3 +68,8 @@
   cursor: pointer;
   float: right;
 }
+
+.minimap {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

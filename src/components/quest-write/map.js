@@ -1,10 +1,9 @@
 /*global kakao*/
-import CommonHeader from "../header";
 import React, { useEffect } from "react";
 
-function Map() {
+function MiniMap() {
   useEffect(() => {
-    let container = document.getElementById("map");
+    let container = document.getElementById("mini-map");
     let options = {
       center: new kakao.maps.LatLng(37.555943079142075, 127.04352676109791),
       level: 3,
@@ -41,11 +40,10 @@ function Map() {
   }, []);
 
   return (
-    <div className="App">
-      <CommonHeader />
-      <div id="map" style={{ width: "100vw", height: "100vh" }}></div>
+    <div className="minimap">
+      <div id="mini-map" style={{ width: "80vw", height: "80vh", margin: "auto" }}></div>
     </div>
   );
 }
 
-export default Map;
+export default MiniMap;

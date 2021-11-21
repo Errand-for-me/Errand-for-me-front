@@ -1,4 +1,5 @@
 import React from "react";
+import MiniMap from "./map";
 import CommonHeader from "../header";
 import "./quest-write.css";
 
@@ -23,6 +24,8 @@ function QuestWrite() {
           이미지
           <input className="image" id="image" name="image" type="file" accept="image/*" />
         </div>
+        <div className="input-container">위치 지정하기</div>
+        <MiniMap />
         <button type="submit" className="submit-btn">
           글 쓰기
         </button>
