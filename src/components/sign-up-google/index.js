@@ -2,8 +2,11 @@ import CommonHeader from "../header";
 import React, { useEffect } from "react";
 import "./sign-up-google.css";
 import { useHistory } from "react-router";
+import { useSetRecoilState } from "recoil";
+import globalAtom from "../../loginState";
 
 function SignUpGooglePage() {
+  const setLoginInfo = useSetRecoilState(globalAtom.user);
   const history = useHistory();
   useEffect(() => {
     alert("회원가입이 필요합니다.");
@@ -22,6 +25,7 @@ function SignUpGooglePage() {
       credentials: "include",
     });
 
+    setLoginInfo({ isLogin: true, nickname: nickname });
     history.goBack();
   };
 

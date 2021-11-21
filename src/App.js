@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import "./App.css";
-
 import CommonHeader from "./components/header";
 import Sidebar from "./components/sidebar";
 import HotBullet from "./components/main";
 import AdsArea from "./components/advertisement";
-
 import Hamburger from "./images/hamburger.png";
 
 const StyledHamburger = styled.img`

@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import BulletImage from "../../images/bullet.svg";
 import SettingImage from "../../images/settings.png";
 import AskImage from "../../images/ask.svg";
 import { useHistory } from "react-router-dom";
 import GoogleLogin from "react-google-login";
+import globalAtom from "../../loginState";
 import "./sidebar.css";
 
 const StyledSidebar = styled.div`
@@ -53,11 +55,22 @@ const StyledSignUp = styled.div`
   border-radius: 10px;
 `;
 
+const StyledUserInfo = styled.div`
+  background-color: #fff;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+`;
+
 const onFailure = (response) => {
   console.log(response);
 };
 
 const Sidebar = (props) => {
+  const loginInfo = useRecoilValue(globalAtom.user);
+  const setLoginInfo = useSetRecoilState(globalAtom.user);
   const history = useHistory();
   const { toggle } = props;
   const routePage = (url) => {
@@ -83,6 +96,7 @@ const Sidebar = (props) => {
       if (data.id === null) {
         routePage("sign-up-google");
       } else {
+        setLoginInfo({ isLogin: true, nickname: data.nickname });
         toggle("none");
       }
     } catch (e) {
@@ -97,23 +111,36 @@ const Sidebar = (props) => {
         <StyledMenu src={BulletImage}></StyledMenu>
         <StyledMenu src={AskImage}></StyledMenu>
       </StyledDiv>
-      <StyledDiv2>
-        <GoogleLogin clientId={process.env.REACT_APP_OAUTH_CLIENT_ID} buttonText="Login" onSuccess={googleLogin} onFailure={onFailure} className="google-login-btn" />
-        <StyledSignIn
-          onClick={() => {
-            routePage("sign-in");
-          }}
-        >
-          로그인
-        </StyledSignIn>
-        <StyledSignUp
-          onClick={() => {
-            routePage("sign-up");
-          }}
-        >
-          회원가입
-        </StyledSignUp>
-      </StyledDiv2>
+      {loginInfo.isLogin === false ? (
+        <StyledDiv2>
+          <GoogleLogin clientId={process.env.REACT_APP_OAUTH_CLIENT_ID} buttonText="Login" onSuccess={googleLogin} onFailure={onFailure} className="google-login-btn" />
+          <StyledSignIn
+            onClick={() => {
+              routePage("sign-in");
+            }}
+          >
+            로그인
+          </StyledSignIn>
+          <StyledSignUp
+            onClick={() => {
+              routePage("sign-up");
+            }}
+          >
+            회원가입
+          </StyledSignUp>
+        </StyledDiv2>
+      ) : (
+        <StyledDiv2>
+          <StyledUserInfo>닉네임: {loginInfo.nickname}</StyledUserInfo>
+          <StyledSignIn
+            onClick={() => {
+              routePage("sign-in");
+            }}
+          >
+            로그아웃
+          </StyledSignIn>
+        </StyledDiv2>
+      )}
     </StyledSidebar>
   );
 };
