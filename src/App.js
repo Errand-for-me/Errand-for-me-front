@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import './App.css';
+import "./App.css";
 
-import CommonHeader from './components/header';
-import Sidebar from './components/sidebar';
-import HotBullet from './components/main';
-import AdsArea from './components/advertisement';
+import CommonHeader from "./components/header";
+import Sidebar from "./components/sidebar";
+import HotBullet from "./components/main";
+import AdsArea from "./components/advertisement";
 
-import Hamburger from './images/hamburger.png';
+import Hamburger from "./images/hamburger.png";
 
 const StyledHamburger = styled.img`
   position: fixed;
@@ -27,20 +27,19 @@ const StyledHamburger = styled.img`
 `;
 
 function App() {
-  const [SidebarState, toggleSidebarState] = useState('none');
+  const [SidebarState, toggleSidebarState] = useState("none");
 
   const toggle = () => {
-    if (SidebarState === 'none') {
-      toggleSidebarState('flex');
-    }
-    else toggleSidebarState('none');
+    if (SidebarState === "none") {
+      toggleSidebarState("flex");
+    } else toggleSidebarState("none");
   };
 
   return (
     <div className="App">
       <StyledHamburger src={Hamburger} onClick={toggle} />
       <CommonHeader />
-      <Sidebar displayType={SidebarState} />
+      <Sidebar displayType={SidebarState} toggle={toggleSidebarState} />
       <AdsArea />
       <HotBullet />
     </div>

@@ -59,32 +59,31 @@ const onFailure = (response) => {
 
 const Sidebar = (props) => {
   const history = useHistory();
-
+  const { toggle } = props;
   const routePage = (url) => {
     history.push(`/${url}`);
   };
 
   const googleLogin = async (response) => {
-    // login 로직 구현
     const {
       googleId,
       profileObj: { email, name },
     } = response;
-  
+
     try {
-      console.log(email, name);
       const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/sign-in-api?email=${email}&name=${name}`, {
         method: "GET",
         headers: {
-          "Conent-Type": "application/json"
+          "Conent-Type": "application/json",
         },
+        credentials: "include",
       });
+
       const data = await result.json();
       if (data.id === null) {
         routePage("sign-up-google");
-      }
-      else {
-        console.log("로그인 성공!");
+      } else {
+        toggle("none");
       }
     } catch (e) {
       throw e;
