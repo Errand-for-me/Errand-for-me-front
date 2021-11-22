@@ -1,8 +1,28 @@
 /*global kakao*/
 import CommonHeader from "../header";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import "./map.css";
 
 function Map() {
+  const [questList, setQuestList] = useState([]);
+  const getQuests = async () => {
+    const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/quest`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+
+    const data = await result.json();
+    console.log(data);
+    setQuestList([...data]);
+  };
+
+  useEffect(() => {
+    getQuests();
+  }, []);
+
   useEffect(() => {
     let container = document.getElementById("map");
     let options = {
@@ -10,35 +30,36 @@ function Map() {
       level: 3,
     };
     let map = new kakao.maps.Map(container, options);
-    let geocoder = new kakao.maps.services.Geocoder();
-    let marker = new kakao.maps.Marker();
-    let infowindow = new kakao.maps.InfoWindow({ zindex: 1 });
 
-    function searchDetailAddrFromCoords(coords, callback) {
-      // 좌표로 법정동 상세 주소 정보를 요청합니다
-      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-    }
+    const imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+    const imageSize = new kakao.maps.Size(24, 35);
+    const imageOption = { offset: new kakao.maps.Point(13, 69) };
 
-    kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-      searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
-        if (status === kakao.maps.services.Status.OK) {
-          let detailAddr = !!result[0].road_address ? "<div>도로명주소 : " + result[0].road_address.address_name + "</div>" : "";
-          detailAddr += "<div>지번 주소 : " + result[0].address.address_name + "</div>";
+    questList.map((quest) => {
+      const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+      const position = new kakao.maps.LatLng(quest.lat, quest.lng);
 
-          let content = '<div class="bAddr">' + '<span class="title">법정동 주소정보</span>' + detailAddr + "</div>";
+      const marker = new kakao.maps.Marker({
+        map: map,
+        position: position,
+        title: quest.title,
+        image: markerImage,
+      });
 
-          console.log(mouseEvent.latLng.getLat(), mouseEvent.latLng.getLng());
-          // 마커를 클릭한 위치에 표시합니다
-          marker.setPosition(mouseEvent.latLng);
-          marker.setMap(map);
+      const content = `<div class="customoverlay">
+        <a href="https://map.kakao.com/" target="_blank">
+          <span class="title">${quest.title}</span>
+        </a>
+      </div>`;
 
-          // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-          infowindow.setContent(content);
-          infowindow.open(map, marker);
-        }
+      const customOverlay = new kakao.maps.CustomOverlay({
+        map: map,
+        position: position,
+        content: content,
+        yAnchor: 1,
       });
     });
-  }, []);
+  }, [questList]);
 
   return (
     <div className="App">

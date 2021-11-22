@@ -4,6 +4,8 @@ import React, { useEffect } from "react";
 function MiniMap() {
   useEffect(() => {
     let container = document.getElementById("mini-map");
+    const latField = document.querySelector("#lat");
+    const lngField = document.querySelector("#lng");
     let options = {
       center: new kakao.maps.LatLng(37.555943079142075, 127.04352676109791),
       level: 3,
@@ -26,7 +28,10 @@ function MiniMap() {
 
           let content = '<div class="bAddr">' + '<span class="title">법정동 주소정보</span>' + detailAddr + "</div>";
 
-          console.log(mouseEvent.latLng.getLat(), mouseEvent.latLng.getLng());
+          const lat = mouseEvent.latLng.getLat();
+          const lng = mouseEvent.latLng.getLng();
+          latField.value = lat;
+          lngField.value = lng;
           // 마커를 클릭한 위치에 표시합니다
           marker.setPosition(mouseEvent.latLng);
           marker.setMap(map);
@@ -42,6 +47,8 @@ function MiniMap() {
   return (
     <div className="minimap">
       <div id="mini-map" style={{ width: "80vw", height: "80vh", margin: "auto" }}></div>
+      <input id="lat" name="lat" type="hidden" value="" />
+      <input id="lng" name="lng" type="hidden" value="" />
     </div>
   );
 }
