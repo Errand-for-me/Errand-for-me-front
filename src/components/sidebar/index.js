@@ -77,6 +77,18 @@ const Sidebar = (props) => {
     history.push(`/${url}`);
   };
 
+  const logOut = async () => {
+    await fetch(`${process.env.REACT_APP_SERVER_IP}/logOut`, {
+      method: "GET",
+      headers: {
+        "Conent-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    setLoginInfo({ isLogin: false });
+    toggle("none");
+  };
+
   const googleLogin = async (response) => {
     const {
       googleId,
@@ -132,13 +144,7 @@ const Sidebar = (props) => {
       ) : (
         <StyledDiv2>
           <StyledUserInfo>닉네임: {loginInfo.nickname}</StyledUserInfo>
-          <StyledSignIn
-            onClick={() => {
-              routePage("sign-in");
-            }}
-          >
-            로그아웃
-          </StyledSignIn>
+          <StyledSignIn onClick={logOut}>로그아웃</StyledSignIn>
         </StyledDiv2>
       )}
     </StyledSidebar>

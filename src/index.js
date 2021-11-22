@@ -9,6 +9,7 @@ import "./index.css";
 import App from "./App";
 import Map from "./components/map";
 import { Board } from "./components/board";
+import Bullet from "./components/bullet";
 import BulletinWrite from "./components/bulletin-write";
 import Quest from "./components/quest";
 import QuestWrite from "./components/quest-write";
@@ -21,6 +22,7 @@ ReactDOM.render(
     <RecoilRoot>
       <BrowserRouter>
         <Route exact path="/bulletin" component={Board} />
+        <Route exact path="/bulletin/:id" component={Bullet} />
         <Route exact path="/bulletin/write" component={BulletinWrite} />
         <Route exact path="/quest" component={Quest} />
         <Route exact path="/quest/write" component={QuestWrite} />

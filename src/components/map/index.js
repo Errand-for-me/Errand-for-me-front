@@ -15,7 +15,6 @@ function Map() {
     });
 
     const data = await result.json();
-    console.log(data);
     setQuestList([...data]);
   };
 
@@ -48,7 +47,7 @@ function Map() {
 
       const content = `<div class="customoverlay">
         <a href="https://map.kakao.com/" target="_blank">
-          <span class="title">${quest.title}</span>
+          <span class="overlay-title">${quest.title}</span>
         </a>
       </div>`;
 

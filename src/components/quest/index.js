@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
+import globalAtom from "../../loginState";
 import CommonHeader from "../header";
 import PlusImg from "../../images/plus.svg";
 import QuestList from "./quest-list";
@@ -39,9 +41,28 @@ const StyledPlus = styled.img`
 
 function Quest() {
   const history = useHistory();
+  const loginInfo = useRecoilValue(globalAtom.user);
+  const setLoginInfo = useSetRecoilState(globalAtom.user);
 
-  const WritePage = () => {
-    history.push("/quest/write");
+  const WritePage = async () => {
+    if (loginInfo.isLogin === false) {
+      const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/isLogin`, {
+        method: "GET",
+        headers: {
+          "Conent-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await result.json();
+      if (data.name === null) {
+        alert("로그인 해주세요");
+      } else {
+        setLoginInfo({ isLogin: true, nickname: data.nickname });
+        history.push("/quest/write");
+      }
+    } else {
+      history.push("/quest/write");
+    }
   };
 
   const [questList, setQuest] = useState([]);

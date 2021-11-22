@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
 import CommonHeader from "../header";
 import BulletList from "./bullet-list";
-
+import globalAtom from "../../loginState";
 import PlusImg from "../../images/plus.svg";
 
 const HotBulletinContainer = styled.div`
@@ -19,6 +20,7 @@ const HotBulletinHeader = styled.div`
   margin: 10px;
   font-size: 20px;
   font-weight: bold;
+  text-align: center;
 `;
 
 const StyledPlus = styled.img`
@@ -39,9 +41,28 @@ const StyledPlus = styled.img`
 
 function Board() {
   const history = useHistory();
+  const loginInfo = useRecoilValue(globalAtom.user);
+  const setLoginInfo = useSetRecoilState(globalAtom.user);
 
-  const WritePage = () => {
-    history.push("/bulletin/write");
+  const WritePage = async () => {
+    if (loginInfo.isLogin === false) {
+      const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/isLogin`, {
+        method: "GET",
+        headers: {
+          "Conent-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await result.json();
+      if (data.name === null) {
+        alert("로그인 해주세요");
+      } else {
+        setLoginInfo({ isLogin: true, nickname: data.nickname });
+        history.push("/bulletin/write");
+      }
+    } else {
+      history.push("/bulletin/write");
+    }
   };
 
   const [bulletList, setBoard] = useState([]);
