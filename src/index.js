@@ -22,7 +22,7 @@ ReactDOM.render(
     <RecoilRoot>
       <BrowserRouter>
         <Route exact path="/bulletin" component={Board} />
-        <Route exact path="/bulletin/:id" component={Bullet} />
+        <Route exact path="/bulletins/:id" component={Bullet} />
         <Route exact path="/bulletin/write" component={BulletinWrite} />
         <Route exact path="/quest" component={Quest} />
         <Route exact path="/quest/write" component={QuestWrite} />

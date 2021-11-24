@@ -26,7 +26,7 @@ function BulletList(props) {
   const history = useHistory();
 
   const getBulletPage = (id) => {
-    history.push(`bulletin/${id}`);
+    history.push(`bulletins/${id}`);
   };
 
   return (
