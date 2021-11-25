@@ -33,7 +33,7 @@ const SubmitBox = styled.div`
 function ChatRoom(props) {
   const setLoginInfo = useSetRecoilState(globalAtom.user);
   const loginInfo = useRecoilValue(globalAtom.user);
-  const [chatHistory, setChatHistory] = useState([]);
+
   const query = props.location.search;
   const regex = /\?toId\=(?<id>.+)\&questTitle\=(?<questTitle>.+)/;
   const groups = regex.exec(query).groups;
@@ -60,23 +60,6 @@ function ChatRoom(props) {
     });
   };
 
-  const getData = async () => {
-    const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/chat-history?quest_title=${questTitle}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
-    const data = await result.json();
-    setChatHistory(data);
-  };
-
-  useEffect(async () => {
-    getData();
-    setInterval(getData, 1000);
-  }, []);
-
   useEffect(async () => {
     if (loginInfo.isLogin === false) {
       const result = await getId();
@@ -85,14 +68,14 @@ function ChatRoom(props) {
   }, []);
 
   return (
-    <div className="ChatLobby">
+    <div className="ChatRoom">
       <CommonHeader />
       <HotBulletinContainer>
         <HotBulletinHeader>채팅</HotBulletinHeader>
       </HotBulletinContainer>
-      <ChatContainer data={chatHistory} />
+      <ChatContainer questTitle={questTitle} />
       <SubmitBox>
-        <input className="head" id="content" name="content" type="text" placeholder="입력하세요" />
+        <input className="head-chat" id="content" name="content" type="text" placeholder="입력하세요" />
         <button type="submit" className="submit-btn-chat" onClick={send}>
           전송
         </button>

@@ -21,6 +21,10 @@ function QuestWrite() {
           <input className="people-input" id="people" name="people" type="text" placeholder="인원" />
         </div>
         <div className="input-container">
+          사례비
+          <input className="people-input" id="payment" name="payment" type="text" placeholder="사례비" />
+        </div>
+        <div className="input-container">
           이미지
           <input className="image" id="image" name="image" type="file" accept="image/*" />
         </div>

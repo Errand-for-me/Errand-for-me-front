@@ -1,0 +1,93 @@
+.container-quest-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container-quest-detail {
+  width: 80vw;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.head-quest-detail {
+  width: 80vw;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+.content-quest-detail {
+  width: 80vw;
+  height: 20vh;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+.people-input-quest-detail {
+  width: 80vw;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+.image-quest-detail {
+  width: 80vw;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+.quest-accept-container {
+}
+
+.submit-btn-quest-detail-accept {
+  margin: auto;
+  width: 50px;
+  font-size: 12px;
+  background-color: lightgray;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.submit-btn-quest-detail {
+  margin: auto;
+  width: 50px;
+  font-size: 12px;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.minimap {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

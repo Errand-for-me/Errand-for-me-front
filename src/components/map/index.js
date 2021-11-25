@@ -1,10 +1,12 @@
 /*global kakao*/
 import CommonHeader from "../header";
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import "./map.css";
 
 function Map() {
   const [questList, setQuestList] = useState([]);
+  const history = useHistory();
   const getQuests = async () => {
     const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/quest`, {
       method: "GET",
@@ -21,6 +23,10 @@ function Map() {
   useEffect(() => {
     getQuests();
   }, []);
+
+  const RoutePage = (id) => {
+    history.push(`/quest/detail/${id}`);
+  };
 
   useEffect(() => {
     let container = document.getElementById("map");
@@ -46,10 +52,15 @@ function Map() {
       });
 
       const content = `<div class="customoverlay">
-        <a href="https://map.kakao.com/" target="_blank">
+        <a onclick="window.location.href='http://localhost:3000/quest/detail/${quest.id}'" target="_blank">
           <span class="overlay-title">${quest.title}</span>
         </a>
       </div>`;
+      // const content = `<div class="customoverlay">
+      //   <a onclick="window.location.href='http://${process.env.REACT_APP_SERVER_IP}/quest/detail/${quest.id}'" target="_blank">
+      //     <span class="overlay-title">${quest.title}</span>
+      //   </a>
+      // </div>`;
 
       const customOverlay = new kakao.maps.CustomOverlay({
         map: map,
