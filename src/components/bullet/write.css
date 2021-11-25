@@ -1,0 +1,13 @@
+.submit-btn-delete {
+  margin: auto;
+  margin-top: 20px;
+  width: 50px;
+  font-size: 12px;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}

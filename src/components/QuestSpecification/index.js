@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { RecoilValue, useRecoilValue } from "recoil";
 import MiniMap from "./map";
 import CommonHeader from "../header";
 import "./quest-detail-page.css";
 import { useHistory } from "react-router";
+import globalAtom from "../../loginState";
 
 function QuestDetail(props) {
   const history = useHistory();
+  const loginInfo = useRecoilValue(globalAtom.user);
   const { params } = props.match;
   const [info, setInfo] = useState({});
   const questId = params.id;
@@ -17,6 +20,21 @@ function QuestDetail(props) {
 
     const data = await result.json();
     setInfo(data);
+    console.log(info.writer, loginInfo.nickname);
+  };
+
+  const deleteQuest = async () => {
+    await fetch(`${process.env.REACT_APP_SERVER_IP}/quest/delete`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: questId,
+      }),
+      mode: "cors",
+    });
+    history.push("/quest");
   };
 
   const acceptQuest = async () => {
@@ -70,17 +88,21 @@ function QuestDetail(props) {
       </div> */}
       <div className="input-container-quest-detail">위치 지정하기</div>
       <MiniMap lng={info.lng} lat={info.lat} title={info.title} />
-      {info.receiver === null ? (
+      {info.writer === loginInfo.nickname ? (
         <div className="quest-accept-container">
-          <div type="submit" className="submit-btn-quest-detail" onClick={acceptQuest}>
+          <div className="submit-btn-quest-detail" onClick={deleteQuest}>
+            삭제하기
+          </div>
+        </div>
+      ) : info.receiver === null ? (
+        <div className="quest-accept-container">
+          <div className="submit-btn-quest-detail" onClick={acceptQuest}>
             수락하기
           </div>
         </div>
       ) : (
         <div className="quest-accept-container">
-          <div type="submit" className="submit-btn-quest-detail-accept">
-            수락하기
-          </div>
+          <div className="submit-btn-quest-detail-accept">수락하기</div>
         </div>
       )}
     </div>

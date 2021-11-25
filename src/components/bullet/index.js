@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
-
+import { useRecoilValue } from "recoil";
+import { useHistory } from "react-router";
+import "./write.css";
 import CommonHeader from "../header";
+import globalAtom from "../../loginState.js";
 
 function Bullet(props) {
+  const history = useHistory();
   const { params } = props.match;
+  const loginInfo = useRecoilValue(globalAtom.user);
+  const bulletId = params.id;
   const [bulletData, setBulletData] = useState({ title: "", content: "" });
 
   useEffect(async () => {
-    const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/bullet?id=${params.id}`, {
+    const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/bullet?id=${bulletId}`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -17,6 +23,20 @@ function Bullet(props) {
 
     setBulletData(data);
   }, []);
+
+  const deleteBullet = async () => {
+    await fetch(`${process.env.REACT_APP_SERVER_IP}/board/delete`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: bulletId,
+      }),
+      mode: "cors",
+    });
+    history.push("/bulletin");
+  };
 
   return (
     <div className="write">
@@ -36,6 +56,15 @@ function Bullet(props) {
           {bulletData.content}
         </div>
       </div>
+      {loginInfo.nickname === bulletData.writer ? (
+        <div>
+          <div className="submit-btn-delete" onClick={deleteBullet}>
+            글 삭제
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

@@ -144,6 +144,8 @@ const Sidebar = (props) => {
       ) : (
         <StyledDiv2>
           <StyledUserInfo>닉네임: {loginInfo.nickname}</StyledUserInfo>
+          <StyledUserInfo>점수: 102 점</StyledUserInfo>
+          <StyledUserInfo>등급: 브론즈</StyledUserInfo>
           <StyledSignIn onClick={logOut}>로그아웃</StyledSignIn>
         </StyledDiv2>
       )}
