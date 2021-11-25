@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import "./App.css";
@@ -7,6 +7,9 @@ import Sidebar from "./components/sidebar";
 import HotBullet from "./components/main";
 import AdsArea from "./components/advertisement";
 import Hamburger from "./images/hamburger.png";
+import getId from "./components/utils/get-id";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import globalAtom from "./loginState";
 
 const StyledHamburger = styled.img`
   position: fixed;
@@ -26,6 +29,16 @@ const StyledHamburger = styled.img`
 
 function App() {
   const [SidebarState, toggleSidebarState] = useState("none");
+  const setLoginInfo = useSetRecoilState(globalAtom.user);
+  const loginInfo = useRecoilValue(globalAtom.user);
+
+  useEffect(async () => {
+    if (loginInfo.isLogin === false) {
+      const result = await getId();
+      console.log(result);
+      setLoginInfo(result);
+    }
+  }, []);
 
   const toggle = () => {
     if (SidebarState === "none") {

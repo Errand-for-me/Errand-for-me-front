@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BulletImage from "../../images/bullet.svg";
 import MapImage from "../../images/map.svg";
 import AskImage from "../../images/ask.svg";
+import ChatImage from "../../images/chat.png";
 import { useHistory } from "react-router-dom";
 
 const ButtonsContainer = styled.div`
@@ -68,6 +69,12 @@ const HotBullet = () => {
           src={MapImage}
           onClick={() => {
             RoutePage("map");
+          }}
+        ></StyledMenu>
+        <StyledMenu
+          src={ChatImage}
+          onClick={() => {
+            RoutePage("chat-list");
           }}
         ></StyledMenu>
       </ButtonsContainer>

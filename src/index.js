@@ -16,6 +16,8 @@ import QuestWrite from "./components/quest-write";
 import SignInPage from "./components/sign-in";
 import SignUpPage from "./components/sign-up";
 import SignUpGooglePage from "./components/sign-up-google";
+import ChatList from "./components/chat-list";
+import ChatRoom from "./components/chat-room";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -30,6 +32,8 @@ ReactDOM.render(
         <Route exact path="/sign-up" component={SignUpPage} />
         <Route exact path="/sign-in" component={SignInPage} />
         <Route exact path="/sign-up-google" component={SignUpGooglePage} />
+        <Route exact path="/chat-list" component={ChatList} />
+        <Route exact path="/chat-room" component={ChatRoom} />
         <Route exact path="/" component={App} />
       </BrowserRouter>
     </RecoilRoot>

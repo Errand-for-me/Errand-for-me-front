@@ -14,7 +14,7 @@ function SignUpGooglePage() {
 
   const send = async () => {
     const nickname = document.querySelector("#head").value;
-    const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/google-sign-in`, {
+    await fetch(`${process.env.REACT_APP_SERVER_IP}/google-sign-in`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
