@@ -25,6 +25,7 @@ function ChatContainer(props) {
 
       let { year, month, day, hour, min } = group;
 
+      hour = Number(hour) + 9;
       let isDay = false;
       if (hour >= 12) {
         isDay = true;
@@ -71,7 +72,7 @@ function ChatHistory(props) {
             {val.time}
           </div>
           <div className={`chat-balloon${val.from === myName ? "-my" : ""}`} key={idx * 3 + 2}>
-            {val.content} {val.to}
+            {val.content}
           </div>
         </div>
       ))}

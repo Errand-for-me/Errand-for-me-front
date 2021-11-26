@@ -15,6 +15,8 @@ function QuestCard(props) {
     else history.push(`/quest/detail/${id}`);
   };
 
+  if (imageURL === null || imageURL === "") imageURL = "none.svg";
+
   return receiver === null ? (
     <div className="quest-card" onClick={() => RoutePage(id)}>
       <img className="card-img" src={`${process.env.REACT_APP_SERVER_IP}/img/${imageURL}`} width="50px" height="50px" />

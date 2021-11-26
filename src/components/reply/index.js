@@ -32,6 +32,7 @@ function ReplySection(props) {
       const group = regex.exec(date).groups;
       let { year, month, day, hour, min } = group;
       let isDay = false;
+      hour = Number(hour) + 9;
       if (hour >= 12) {
         isDay = true;
         if (hour > 12) hour -= 12;
