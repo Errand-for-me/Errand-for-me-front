@@ -5,7 +5,7 @@ import "./quest-card.css";
 
 function QuestCard(props) {
   const { data } = props;
-  const { id, title, people, writer, imageURL, payment, receiver } = data;
+  let { id, title, people, writer, imageURL, payment, receiver } = data;
 
   const history = useHistory();
 
