@@ -56,8 +56,6 @@ const StyledWriter = styled.div`
   align-self: flex-end;
 `;
 
-const weekArr = ["월요일입니다.", "화요일입니다.", "수요일입니다.", "목요일입니다.", "금요일입니다.", "토요일입니다.", "일요일입니다.", "SAT", "SUN", "MON", "TUE", "WED", "THU"];
-
 const HotBullet = () => {
   const history = useHistory();
   const [hotBulletList, setHotBoard] = useState([]);
@@ -69,7 +67,7 @@ const HotBullet = () => {
       });
 
       const data = await result.json();
-      const processed = data.slice(0, 4);
+      const processed = data.slice(0, 5);
       setHotBoard(processed);
     }
 

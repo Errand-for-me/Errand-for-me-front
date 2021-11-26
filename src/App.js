@@ -35,7 +35,6 @@ function App() {
   useEffect(async () => {
     if (loginInfo.isLogin === false) {
       const result = await getId();
-      console.log(result);
       setLoginInfo(result);
     }
   }, []);

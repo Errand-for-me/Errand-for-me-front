@@ -51,22 +51,23 @@ function Map() {
         image: markerImage,
       });
 
-      const content = `<div class="customoverlay">
-        <a onclick="window.location.href='${process.env.REACT_APP_SERVER_IP}/quest/detail/${quest.id}'" target="_blank">
-          <span class="overlay-title">${quest.title}</span>
-        </a>
-      </div>`;
-      // const content = `<div class="customoverlay">
-      //   <a onclick="window.location.href='http://${process.env.REACT_APP_SERVER_IP}/quest/detail/${quest.id}'" target="_blank">
-      //     <span class="overlay-title">${quest.title}</span>
-      //   </a>
-      // </div>`;
+      let content = document.createElement("div");
+      content.className = "customoverlay";
+      let aTag = document.createElement("a");
+      aTag.target = "_blank";
+      let spanTag = document.createElement("span");
+      spanTag.className = "overlay-title";
+      spanTag.innerHTML = quest.title;
+      aTag.appendChild(spanTag);
+      content.appendChild(aTag);
+      content.addEventListener("click", () => RoutePage(quest.id));
 
       const customOverlay = new kakao.maps.CustomOverlay({
         map: map,
         position: position,
         content: content,
         yAnchor: 1,
+        clickable: true,
       });
     });
   }, [questList]);
