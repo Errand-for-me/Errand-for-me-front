@@ -3,7 +3,6 @@ import "./comment.css";
 
 function ReplyList(props) {
   const { replies } = props;
-  console.log(replies);
 
   return (
     <div>

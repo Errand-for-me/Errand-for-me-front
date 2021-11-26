@@ -10,7 +10,6 @@ function ChatContainer(props) {
   const { questTitle } = props;
 
   const getData = async () => {
-    console.log("겟또다제~");
     const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/chat-history?quest_title=${questTitle}`, {
       method: "GET",
       headers: {
@@ -45,7 +44,7 @@ function ChatContainer(props) {
 
   useEffect(() => {
     getData();
-    const interval = setInterval(getData, 1000);
+    const interval = setInterval(getData, 500);
 
     return () => {
       clearInterval(interval);
