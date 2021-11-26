@@ -1,0 +1,33 @@
+.comment-card {
+  margin-left: 35px;
+  margin-right: 35px;
+  padding: 10px;
+  border-bottom: solid 1px;
+  background: aliceblue;
+}
+
+.comment-info {
+  display: flex;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.comment-writer {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.comment-time {
+  font-size: 10px;
+  margin-left: 10px;
+  align-self: flex-end;
+}
+
+.comment-header {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}

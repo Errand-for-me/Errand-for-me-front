@@ -13,10 +13,10 @@ function ChatCard(props) {
 
   return (
     <div className="chat-card" onClick={RoutePage}>
-      <div className="details">
-        <div className="title"> {title} </div>
-        <div className="info-container">
-          <div className="writer"> {writer} </div>
+      <div className="chat-card-details">
+        <div className="chat-card-title"> 퀘스트: {title} </div>
+        <div className="chat-card-info-container">
+          <div className="chat-card-writer"> 대화 상대: {writer} </div>
         </div>
       </div>
     </div>

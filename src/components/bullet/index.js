@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { useHistory } from "react-router";
 import "./write.css";
 import CommonHeader from "../header";
+import ReplySection from "../reply";
 import globalAtom from "../../loginState.js";
 
 function Bullet(props) {
@@ -65,6 +66,7 @@ function Bullet(props) {
       ) : (
         <></>
       )}
+      <ReplySection bulletTitle={bulletData.title} />
     </div>
   );
 }

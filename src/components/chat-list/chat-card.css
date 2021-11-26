@@ -1,36 +1,26 @@
-.quest-card {
+.chat-card {
   display: flex;
   margin: 10px;
   background-color: #e9ecef;
 }
 
-.card-img {
-  margin: auto;
-  margin-left: 20px;
-  margin-right: 10px;
-}
-
-.details {
+.chat-card-details {
   width: 80vw;
 }
 
-.title {
+.chat-card-title {
   margin: 10px;
   padding: 10px;
   font-weight: bold;
 }
 
-.info-container {
+.chat-card-info-container {
   display: flex;
   margin: 10px;
   padding: 10px;
 }
 
-.people {
-  flex-grow: 1;
-}
-
-.writer {
+.chat-card-writer {
   text-align: right;
   flex-grow: 1;
 }

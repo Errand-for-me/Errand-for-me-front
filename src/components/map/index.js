@@ -52,7 +52,7 @@ function Map() {
       });
 
       const content = `<div class="customoverlay">
-        <a onclick="window.location.href='http://localhost:3000/quest/detail/${quest.id}'" target="_blank">
+        <a onclick="window.location.href='${process.env.REACT_APP_SERVER_IP}/quest/detail/${quest.id}'" target="_blank">
           <span class="overlay-title">${quest.title}</span>
         </a>
       </div>`;

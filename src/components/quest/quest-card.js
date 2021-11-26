@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import getId from "../utils/get-id";
 import "./quest-card.css";
 
 function QuestCard(props) {
@@ -8,8 +9,10 @@ function QuestCard(props) {
 
   const history = useHistory();
 
-  const RoutePage = (id) => {
-    history.push(`/quest/detail/${id}`);
+  const RoutePage = async (id) => {
+    const loginData = await getId();
+    if (loginData.isLogin === false) alert("로그인 해주세요.");
+    else history.push(`/quest/detail/${id}`);
   };
 
   return receiver === null ? (

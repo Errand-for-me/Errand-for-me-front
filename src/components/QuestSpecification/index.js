@@ -20,7 +20,6 @@ function QuestDetail(props) {
 
     const data = await result.json();
     setInfo(data);
-    console.log(info.writer, loginInfo.nickname);
   };
 
   const deleteQuest = async () => {

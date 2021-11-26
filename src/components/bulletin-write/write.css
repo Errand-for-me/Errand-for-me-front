@@ -8,10 +8,10 @@
   margin: auto;
 }
 
-.head {
+.bullet-head {
   width: 80vw;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -20,7 +20,7 @@
   resize: none;
 }
 
-.content {
+.bullet-content {
   width: 80vw;
   height: 50vh;
   margin-bottom: 20px;
@@ -32,8 +32,9 @@
   resize: none;
 }
 
-.submit-btn {
+.bullet-submit-btn {
   margin: auto;
+  margin-top: 5px;
   background-color: #4caf50;
   color: white;
   padding: 12px 20px;
