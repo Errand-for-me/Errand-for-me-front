@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
@@ -35,7 +35,7 @@ function ChatRoom(props) {
   const loginInfo = useRecoilValue(globalAtom.user);
 
   const query = props.location.search;
-  const regex = /\?toId\=(?<id>.+)\&questTitle\=(?<questTitle>.+)/;
+  const regex = /\?toId=(?<id>.+)&questTitle=(?<questTitle>.+)/;
   const groups = regex.exec(query).groups;
   const toId = decodeURI(groups.id);
   const questTitle = groups.questTitle;
@@ -60,11 +60,14 @@ function ChatRoom(props) {
     });
   };
 
-  useEffect(async () => {
-    if (loginInfo.isLogin === false) {
-      const result = await getId();
-      setLoginInfo(result);
+  useEffect(() => {
+    async function fetchData() {
+      if (loginInfo.isLogin === false) {
+        const result = await getId();
+        setLoginInfo(result);
+      }
     }
+    fetchData();
   }, []);
 
   return (

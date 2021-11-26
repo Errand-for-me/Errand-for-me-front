@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import BulletImage from "./images/bullet.svg";
+import MapImage from "./images/map.svg";
+import AskImage from "./images/ask.svg";
+import ChatImage from "./images/chat.png";
 import "./App.css";
 import CommonHeader from "./components/header";
 import Sidebar from "./components/sidebar";
@@ -10,6 +13,7 @@ import Hamburger from "./images/hamburger.png";
 import getId from "./components/utils/get-id";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import globalAtom from "./loginState";
+import { useHistory } from "react-router";
 
 const StyledHamburger = styled.img`
   position: fixed;
@@ -27,16 +31,33 @@ const StyledHamburger = styled.img`
   z-index: 2;
 `;
 
+const ButtonsContainer = styled.div`
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+const StyledMenu = styled.img`
+  width: 36px;
+  height: 36px;
+  margin: 20px;
+  cursor: pointer;
+`;
+
 function App() {
   const [SidebarState, toggleSidebarState] = useState("none");
   const setLoginInfo = useSetRecoilState(globalAtom.user);
   const loginInfo = useRecoilValue(globalAtom.user);
+  const history = useHistory();
 
-  useEffect(async () => {
-    if (loginInfo.isLogin === false) {
-      const result = await getId();
-      setLoginInfo(result);
+  useEffect(() => {
+    async function fetchDate() {
+      if (loginInfo.isLogin === false) {
+        const result = await getId();
+        setLoginInfo(result);
+      }
     }
+    fetchDate();
   }, []);
 
   const toggle = () => {
@@ -45,10 +66,42 @@ function App() {
     } else toggleSidebarState("none");
   };
 
+  const RoutePage = async (url) => {
+    const loginData = await getId();
+    if (loginData.isLogin === false && (url === "map" || url === "chat-list")) alert("로그인 해주세요.");
+    else history.push("/" + url);
+  };
+
   return (
     <div className="App">
       <StyledHamburger src={Hamburger} onClick={toggle} />
       <CommonHeader />
+      <ButtonsContainer>
+        <StyledMenu
+          src={BulletImage}
+          onClick={() => {
+            RoutePage("bulletin");
+          }}
+        ></StyledMenu>
+        <StyledMenu
+          src={AskImage}
+          onClick={() => {
+            RoutePage("quest");
+          }}
+        ></StyledMenu>
+        <StyledMenu
+          src={MapImage}
+          onClick={() => {
+            RoutePage("map");
+          }}
+        ></StyledMenu>
+        <StyledMenu
+          src={ChatImage}
+          onClick={() => {
+            RoutePage("chat-list");
+          }}
+        ></StyledMenu>
+      </ButtonsContainer>
       <Sidebar displayType={SidebarState} toggle={toggleSidebarState} />
       <AdsArea />
       <HotBullet />

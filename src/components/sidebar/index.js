@@ -9,7 +9,7 @@ import globalAtom from "../../loginState";
 import "./sidebar.css";
 
 const StyledSidebar = styled.div`
-  background-color: rgb(40, 45, 78);
+  background-color: #fd9f28;
   width: 100vw;
   height: 92vh;
   position: fixed;
@@ -28,7 +28,7 @@ const StyledMenu = styled.img`
 const StyledDiv = styled.div`
   display: flex;
   width: 20vw;
-  flex-direction: column-reverse;
+  flex-direction: column;
   background-color: rgb(32, 37, 64);
 `;
 
@@ -91,7 +91,6 @@ const Sidebar = (props) => {
 
   const googleLogin = async (response) => {
     const {
-      googleId,
       profileObj: { email, name },
     } = response;
 

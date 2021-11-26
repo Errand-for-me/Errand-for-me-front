@@ -13,16 +13,19 @@ function Bullet(props) {
   const bulletId = params.id;
   const [bulletData, setBulletData] = useState({ title: "", content: "" });
 
-  useEffect(async () => {
-    const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/bullet?id=${bulletId}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: "cors",
-    });
-    const data = await result.json();
+  useEffect(() => {
+    async function fetchData() {
+      const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/bullet?id=${bulletId}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+      });
+      const data = await result.json();
 
-    setBulletData(data);
+      setBulletData(data);
+    }
+    fetchData();
   }, []);
 
   const deleteBullet = async () => {

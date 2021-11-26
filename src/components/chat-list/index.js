@@ -70,14 +70,17 @@ function ChatList() {
     fetchData();
   }, []);
 
-  useEffect(async () => {
-    if (loginInfo.isLogin === false) {
-      const result = await getId();
-      if (result.isLogin === false) {
-        alert("로그인 해주세요");
+  useEffect(() => {
+    async function fetchData() {
+      if (loginInfo.isLogin === false) {
+        const result = await getId();
+        if (result.isLogin === false) {
+          alert("로그인 해주세요");
+        }
+        setLoginInfo(result);
       }
-      setLoginInfo(result);
     }
+    fetchData();
   }, []);
 
   return (

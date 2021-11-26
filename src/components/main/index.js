@@ -1,15 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import BulletImage from "../../images/bullet.svg";
-import MapImage from "../../images/map.svg";
-import AskImage from "../../images/ask.svg";
-import ChatImage from "../../images/chat.png";
 import getId from "../utils/get-id";
 import { useHistory } from "react-router-dom";
-
-const ButtonsContainer = styled.div`
-  margin: auto;
-`;
 
 const HotBulletin = styled.div`
   padding: auto;
@@ -37,13 +29,6 @@ const HotBulletinContent = styled.div`
   width: 90%;
   display: flex;
   justify-content: space-between;
-`;
-
-const StyledMenu = styled.img`
-  width: 36px;
-  height: 36px;
-  margin: 20px;
-  cursor: pointer;
 `;
 
 const StyledTitle = styled.div`
@@ -82,32 +67,6 @@ const HotBullet = () => {
 
   return (
     <HotBulletin className="hotBulletins">
-      <ButtonsContainer>
-        <StyledMenu
-          src={BulletImage}
-          onClick={() => {
-            RoutePage("bulletin");
-          }}
-        ></StyledMenu>
-        <StyledMenu
-          src={AskImage}
-          onClick={() => {
-            RoutePage("quest");
-          }}
-        ></StyledMenu>
-        <StyledMenu
-          src={MapImage}
-          onClick={() => {
-            RoutePage("map");
-          }}
-        ></StyledMenu>
-        <StyledMenu
-          src={ChatImage}
-          onClick={() => {
-            RoutePage("chat-list");
-          }}
-        ></StyledMenu>
-      </ButtonsContainer>
       <HotBulletinContainer>
         <HotBulletinHeader>Hot 게시판!!</HotBulletinHeader>
         {hotBulletList.map((val, idx) => {

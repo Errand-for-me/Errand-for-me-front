@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Ads = styled.div`
   background-color: aqua;
-  width: 80vw;
+  width: 100vw;
   height: 20vh;
   size: 20px;
   margin: auto;
@@ -13,11 +13,7 @@ const Ads = styled.div`
 `;
 
 const AdsArea = () => {
-  return (
-    <Ads className='Ads'>
-      광고 영역
-    </Ads>
-  );
-}
+  return <Ads className="Ads">광고 영역</Ads>;
+};
 
 export default AdsArea;

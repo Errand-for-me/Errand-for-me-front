@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { RecoilValue, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import MiniMap from "./map";
 import CommonHeader from "../header";
 import "./quest-detail-page.css";
@@ -50,8 +50,11 @@ function QuestDetail(props) {
     history.push("/quest");
   };
 
-  useEffect(async () => {
-    await fetchQuestInfo();
+  useEffect(() => {
+    async function fetchData() {
+      await fetchQuestInfo();
+    }
+    fetchData();
   }, []);
 
   return (

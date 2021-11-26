@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import globalAtom from "../../loginState";
 import "./chat-room.css";
 
-const regex = /(?<year>[0-9]+)\-(?<month>[0-9]+)\-(?<day>[0-9]+).+?(?<hour>[0-9]+)\:(?<min>[0-9]+)/;
+const regex = /(?<year>[0-9]+)-(?<month>[0-9]+)-(?<day>[0-9]+).+?(?<hour>[0-9]+):(?<min>[0-9]+)/;
 
 function ChatContainer(props) {
   const [chats, setChats] = useState([]);

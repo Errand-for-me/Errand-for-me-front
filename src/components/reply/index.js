@@ -11,7 +11,7 @@ const SubmitBox = styled.div`
   font-size: 20px;
 `;
 
-const regex = /(?<year>[0-9]+)\-(?<month>[0-9]+)\-(?<day>[0-9]+).+?(?<hour>[0-9]+)\:(?<min>[0-9]+)/;
+const regex = /(?<year>[0-9]+)-(?<month>[0-9]+)-(?<day>[0-9]+).+?(?<hour>[0-9]+):(?<min>[0-9]+)/;
 
 function ReplySection(props) {
   const loginInfo = useRecoilValue(globalAtom.user);
@@ -46,8 +46,11 @@ function ReplySection(props) {
     setComments(processed.reverse());
   };
 
-  useEffect(async () => {
-    await fetchComments();
+  useEffect(() => {
+    async function fetchData() {
+      await fetchComments();
+    }
+    fetchData();
   }, [bulletTitle]);
 
   const send = async () => {
