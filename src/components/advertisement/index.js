@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 const Ads = styled.div`
-  background-color: aqua;
+  background-color: #ffd7a7;
   width: 100vw;
-  height: 20vh;
+  height: 12vh;
   size: 20px;
   margin: auto;
   margin-top: 10px;
-  margin-bottom: 10px;
+  padding-top: 5px;
   text-align: center;
   border-radius: 20px;
 `;

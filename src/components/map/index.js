@@ -74,8 +74,7 @@ function Map() {
 
   return (
     <div className="App">
-      <CommonHeader />
-      <div id="map" style={{ width: "100vw", height: "100vh" }}></div>
+      <div id="map" style={{ width: "100vw", height: "50vh" }}></div>
     </div>
   );
 }

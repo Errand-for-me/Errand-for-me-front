@@ -5,6 +5,7 @@ import "./write.css";
 import CommonHeader from "../header";
 import ReplySection from "../reply";
 import globalAtom from "../../loginState.js";
+import AdsArea from "../advertisement";
 
 function Bullet(props) {
   const history = useHistory();
@@ -69,6 +70,7 @@ function Bullet(props) {
       ) : (
         <></>
       )}
+      <AdsArea />
       <ReplySection bulletTitle={bulletData.title} />
     </div>
   );

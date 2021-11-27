@@ -11,6 +11,19 @@ const SubmitBox = styled.div`
   font-size: 20px;
 `;
 
+const SubmitBtn = styled.div`
+  margin: auto;
+  width: 50px;
+  font-size: 12px;
+  background-color: #fd8f00;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+`;
+
 const regex = /(?<year>[0-9]+)-(?<month>[0-9]+)-(?<day>[0-9]+).+?(?<hour>[0-9]+):(?<min>[0-9]+)/;
 
 function ReplySection(props) {
@@ -77,9 +90,7 @@ function ReplySection(props) {
       {loginInfo.isLogin ? (
         <SubmitBox>
           <input className="head-chat" id="comment-box" name="content" type="text" placeholder="입력하세요" />
-          <button type="submit" className="submit-btn-chat" onClick={send}>
-            전송
-          </button>
+          <SubmitBtn onClick={send}>전송</SubmitBtn>
         </SubmitBox>
       ) : (
         <></>

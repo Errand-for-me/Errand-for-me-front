@@ -10,6 +10,7 @@ import Sidebar from "./components/sidebar";
 import HotBullet from "./components/main";
 import AdsArea from "./components/advertisement";
 import Hamburger from "./images/hamburger.png";
+import Map from "./components/map";
 import getId from "./components/utils/get-id";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import globalAtom from "./loginState";
@@ -28,7 +29,7 @@ const StyledHamburger = styled.img`
   height: 36px;
   cursor: pointer;
   box-shadow: 2px 5px 5px rgb(0 0 0 / 50%);
-  z-index: 2;
+  z-index: 3;
 `;
 
 const ButtonsContainer = styled.div`
@@ -90,12 +91,6 @@ function App() {
           }}
         ></StyledMenu>
         <StyledMenu
-          src={MapImage}
-          onClick={() => {
-            RoutePage("map");
-          }}
-        ></StyledMenu>
-        <StyledMenu
           src={ChatImage}
           onClick={() => {
             RoutePage("chat-list");
@@ -104,7 +99,8 @@ function App() {
       </ButtonsContainer>
       <Sidebar displayType={SidebarState} toggle={toggleSidebarState} />
       <AdsArea />
-      <HotBullet />
+      <Map />
+      {/* <HotBullet /> */}
     </div>
   );
 }

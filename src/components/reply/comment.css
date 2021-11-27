@@ -2,8 +2,7 @@
   margin-left: 35px;
   margin-right: 35px;
   padding: 10px;
-  border-bottom: solid 1px;
-  background: aliceblue;
+  border-bottom: solid 1px lightgray;
 }
 
 .comment-info {
@@ -19,8 +18,10 @@
 
 .comment-time {
   font-size: 10px;
+  color: gray;
   margin-left: 10px;
   align-self: flex-end;
+  font-weight: lighter;
 }
 
 .comment-header {

@@ -9,11 +9,9 @@ import globalAtom from "../../loginState";
 import PlusImg from "../../images/plus.svg";
 
 const HotBulletinContainer = styled.div`
-  width: 80vw;
+  width: 100vw;
   margin: auto;
   margin-top: 20px;
-  border-radius: 20px;
-  border: solid 1px;
 `;
 
 const HotBulletinHeader = styled.div`

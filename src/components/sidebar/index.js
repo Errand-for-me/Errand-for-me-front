@@ -13,7 +13,7 @@ const StyledSidebar = styled.div`
   width: 100vw;
   height: 92vh;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   display: ${(props) => props.display.displayType};
 `;
 

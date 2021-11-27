@@ -6,7 +6,6 @@ function ReplyList(props) {
 
   return (
     <div>
-      <div className="comment-header">댓글</div>
       {replies.map((val, idx) => (
         <div className="comment-card" key={idx}>
           <div className="comment-info">

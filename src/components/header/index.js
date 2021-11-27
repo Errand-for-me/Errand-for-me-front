@@ -1,5 +1,6 @@
 import "./header.css";
 import logo from "../../images/logo.png";
+import back from "../../images/back.svg";
 import { useHistory } from "react-router";
 
 const CommonHeader = () => {
@@ -9,9 +10,14 @@ const CommonHeader = () => {
     history.push("/");
   };
 
+  const goBack = () => {
+    history.goBack();
+  };
+
   return (
     <div className="common-header">
-      <img className="logo" src={logo} width="130px" onClick={moveHome} />
+      <img className="back" src={back} onClick={goBack} />
+      <img className="logo" src={logo} onClick={moveHome} />
     </div>
   );
 };
