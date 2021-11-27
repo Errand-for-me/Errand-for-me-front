@@ -84,18 +84,22 @@ function QuestDetail(props) {
           {info.payment}
         </div>
       </div>
-      {/* <div className="input-container-quest-detail">
-        이미지
-        <div className="image-quest-detail" id="image" name="image" type="file" accept="image/*" />
-      </div> */}
       <div className="input-container-quest-detail">위치 지정하기</div>
       <MiniMap lng={info.lng} lat={info.lat} title={info.title} />
       {info.writer === loginInfo.nickname ? (
-        <div className="quest-accept-container">
-          <div className="submit-btn-quest-detail" onClick={deleteQuest}>
-            삭제하기
+        info.receiver === null ? (
+          <div className="quest-accept-container">
+            <div className="submit-btn-quest-detail" onClick={deleteQuest}>
+              삭제하기
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="quest-accept-container">
+            <div className="submit-btn-quest-detail" onClick={deleteQuest}>
+              완 료!
+            </div>
+          </div>
+        )
       ) : info.receiver === null ? (
         <div className="quest-accept-container">
           <div className="submit-btn-quest-detail" onClick={acceptQuest}>
