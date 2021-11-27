@@ -6,17 +6,16 @@ import styled from "styled-components";
 import globalAtom from "../../loginState";
 import NavBar from "../nav-bar";
 import CommonHeader from "../header";
-import PlusImg from "../../images/plus.svg";
 import QuestList from "./quest-list";
 import Modal from "../utils/modal/modal";
+import AdsArea from "../advertisement";
+import BeneathNavBarContainer from "../utils/beneath-nav-bar-template";
 
 const HotBulletinContainer = styled.div`
   width: 90vw;
   text-align: center;
   margin: auto;
   margin-top: 20px;
-  border-radius: 20px;
-  border: solid 1px;
 `;
 
 const HotBulletinHeader = styled.div`
@@ -25,19 +24,22 @@ const HotBulletinHeader = styled.div`
   font-weight: bold;
 `;
 
-const StyledPlus = styled.img`
+const StyledPlus = styled.div`
+  font-family: "one_mobile";
+  color: #fd8f00;
   position: fixed;
   padding: 10px;
   margin: 20px;
-  margin-top: 85vh;
-  margin-left: 76vw;
+  margin-top: 17vh;
+  margin-left: 71vw;
+  border: solid 3px #fd8f00;
+  border-radius: 20px;
   padding-height: 60px;
   background-color: white;
-  border-radius: 50px;
-  width: 36px;
-  height: 36px;
+  width: 60px;
+  height: 17px;
+  text-align: center;
   cursor: pointer;
-  box-shadow: 2px 5px 5px rgb(0 0 0 / 50%);
   z-index: 2;
 `;
 
@@ -86,13 +88,16 @@ function Quest() {
   return (
     <div className="App">
       <Modal />
-      <StyledPlus src={PlusImg} onClick={WritePage} />
+      <StyledPlus onClick={WritePage}>등록하기</StyledPlus>
       <CommonHeader />
       <NavBar menu="quest" />
-      <HotBulletinContainer>
-        <HotBulletinHeader>심부름 찾기</HotBulletinHeader>
-      </HotBulletinContainer>
-      <QuestList data={questList} />
+      <BeneathNavBarContainer>
+        <HotBulletinContainer>
+          <HotBulletinHeader>심부름 찾기</HotBulletinHeader>
+        </HotBulletinContainer>
+        <AdsArea />
+        <QuestList data={questList} />
+      </BeneathNavBarContainer>
     </div>
   );
 }

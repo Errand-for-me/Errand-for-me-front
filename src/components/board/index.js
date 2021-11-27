@@ -8,8 +8,8 @@ import CommonHeader from "../header";
 import BulletList from "./bullet-list";
 import AdsArea from "../advertisement";
 import globalAtom from "../../loginState";
-import PlusImg from "../../images/plus.svg";
 import Modal from "../utils/modal/modal";
+import BeneathNavBarContainer from "../utils/beneath-nav-bar-template";
 
 const HotBulletinContainer = styled.div`
   width: 100vw;
@@ -24,19 +24,22 @@ const HotBulletinHeader = styled.div`
   text-align: center;
 `;
 
-const StyledPlus = styled.img`
+const StyledPlus = styled.div`
+  font-family: "one_mobile";
+  color: #fd8f00;
   position: fixed;
   padding: 10px;
   margin: 20px;
-  margin-top: 85vh;
-  margin-left: 76vw;
+  margin-top: 17vh;
+  margin-left: 71vw;
+  border: solid 3px #fd8f00;
+  border-radius: 20px;
   padding-height: 60px;
   background-color: white;
-  border-radius: 50px;
-  width: 36px;
-  height: 36px;
+  width: 60px;
+  height: 17px;
+  text-align: center;
   cursor: pointer;
-  box-shadow: 2px 5px 5px rgb(0 0 0 / 50%);
   z-index: 2;
 `;
 
@@ -85,15 +88,16 @@ function Board() {
   return (
     <div className="bullet-board">
       <Modal />
-      <StyledPlus src={PlusImg} onClick={WritePage} />
+      <StyledPlus onClick={WritePage}>글 쓰기</StyledPlus>
       <CommonHeader />
       <NavBar menu="bulletin" />
-      <HotBulletinContainer>
-        <HotBulletinHeader>전체 게시판</HotBulletinHeader>
-        <AdsArea />
-        <BulletList data={bulletList} />
-      </HotBulletinContainer>
-      <div></div>
+      <BeneathNavBarContainer>
+        <HotBulletinContainer>
+          <HotBulletinHeader>전체 게시판</HotBulletinHeader>
+          <AdsArea />
+          <BulletList data={bulletList} />
+        </HotBulletinContainer>
+      </BeneathNavBarContainer>
     </div>
   );
 }

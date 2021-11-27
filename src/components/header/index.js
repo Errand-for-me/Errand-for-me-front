@@ -4,7 +4,7 @@ import Hamburger from "../../images/hamburger.png";
 import { useHistory } from "react-router";
 
 const CommonHeader = (props) => {
-  const { isMainPage, toggle } = props;
+  const { isMainPage, path, toggle } = props;
   const history = useHistory();
 
   const moveHome = () => {
@@ -12,7 +12,19 @@ const CommonHeader = (props) => {
   };
 
   const goBack = () => {
-    history.goBack();
+    switch (path) {
+      case "bulletin":
+        history.push("/bulletin");
+        break;
+      case "quest":
+        history.push("/quest");
+        break;
+      case "chat":
+        history.push("/chat-list");
+        break;
+      default:
+        history.push("/");
+    }
   };
 
   return (

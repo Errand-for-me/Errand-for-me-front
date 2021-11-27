@@ -4,11 +4,15 @@ import getId from "../utils/get-id";
 
 const ButtonsContainer = styled.div`
   margin: auto;
+  width: 100%;
+  background-color: #ffffff;
+  height: 64px;
   display: flex;
+  position: fixed;
   justify-content: space-evenly;
   font-size: 20px;
   font-family: "one_mobile";
-  box-shadow: 0 0 16px grey;
+  box-shadow: 0 9px 7px -3px lightgrey;
 `;
 
 const StyledMenuNotSelected = styled.div`

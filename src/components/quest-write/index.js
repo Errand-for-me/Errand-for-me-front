@@ -6,7 +6,7 @@ import "./quest-write.css";
 function QuestWrite() {
   return (
     <div className="write">
-      <CommonHeader />
+      <CommonHeader path="quest" />
       <form className="quest-container" action={`${process.env.REACT_APP_SERVER_IP}/quest`} method="POST" encType="multipart/form-data">
         <div className="quest-input-container">
           제목

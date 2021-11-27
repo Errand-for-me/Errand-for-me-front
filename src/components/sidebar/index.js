@@ -1,9 +1,5 @@
 import styled from "styled-components";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import BulletImage from "../../images/bullet.svg";
-import SettingImage from "../../images/settings.png";
-import AskImage from "../../images/ask.svg";
-import theme from "../../images/theme.png";
 import { useHistory } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import globalAtom from "../../loginState";
@@ -118,11 +114,6 @@ const Sidebar = (props) => {
 
   return (
     <StyledSidebar className="sidebar" display={props}>
-      {/* <StyledDiv>
-        <StyledMenu src={SettingImage}></StyledMenu>
-        <StyledMenu src={BulletImage}></StyledMenu>
-        <StyledMenu src={AskImage}></StyledMenu>
-      </StyledDiv> */}
       {loginInfo.isLogin === false ? (
         <StyledDiv2>
           <GoogleLogin clientId={process.env.REACT_APP_OAUTH_CLIENT_ID} buttonText="Login" onSuccess={googleLogin} onFailure={onFailure} className="google-login-btn" />

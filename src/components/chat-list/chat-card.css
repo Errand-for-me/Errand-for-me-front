@@ -1,26 +1,27 @@
 .chat-card {
   display: flex;
-  margin: 10px;
-  background-color: #e9ecef;
+  padding: 15px;
+  border-bottom: solid 1px lightgray;
+}
+
+.chat-card-profile {
+  opacity: 0.3;
+}
+
+.chat-card-profile {
+  opacity: 0.3;
 }
 
 .chat-card-details {
-  width: 80vw;
 }
 
 .chat-card-title {
+  font-family: "one_mobile";
   margin: 10px;
-  padding: 10px;
   font-weight: bold;
 }
 
-.chat-card-info-container {
-  display: flex;
-  margin: 10px;
-  padding: 10px;
-}
-
 .chat-card-writer {
-  text-align: right;
-  flex-grow: 1;
+  font-family: "KoPub";
+  margin: 10px;
 }

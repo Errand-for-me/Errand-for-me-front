@@ -2,41 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
+import Modal from "../utils/modal/modal";
 import globalAtom from "../../loginState";
 import CommonHeader from "../header";
 import NavBar from "../nav-bar";
+import BeneathNavBarContainer from "../utils/beneath-nav-bar-template";
 import ChatListIter from "./chat-list";
 import getId from "../utils/get-id";
 
 const HotBulletinContainer = styled.div`
-  width: 90vw;
+  width: 100vw;
   text-align: center;
   margin: auto;
-  margin-top: 20px;
-  border-radius: 20px;
-  border: solid 1px;
+  margin-top: 25px;
+  padding-bottom: 15px;
+  border-bottom: solid 1px lightgray;
 `;
 
 const HotBulletinHeader = styled.div`
   margin: 10px;
   font-size: 20px;
   font-weight: bold;
-`;
-
-const StyledPlus = styled.img`
-  position: fixed;
-  padding: 10px;
-  margin: 20px;
-  margin-top: 85vh;
-  margin-left: 76vw;
-  padding-height: 60px;
-  background-color: white;
-  border-radius: 50px;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  box-shadow: 2px 5px 5px rgb(0 0 0 / 50%);
-  z-index: 2;
 `;
 
 function ChatList() {
@@ -76,7 +62,8 @@ function ChatList() {
       if (loginInfo.isLogin === false) {
         const result = await getId();
         if (result.isLogin === false) {
-          alert("로그인 해주세요");
+          const modal = document.querySelector("#modal");
+          modal.style.display = "flex";
         }
         setLoginInfo(result);
       }
@@ -86,12 +73,15 @@ function ChatList() {
 
   return (
     <div className="ChatLobby">
+      <Modal />
       <CommonHeader />
       <NavBar menu="chat" />
-      <HotBulletinContainer>
-        <HotBulletinHeader>채팅 목록</HotBulletinHeader>
-      </HotBulletinContainer>
-      <ChatListIter data={chatList} />
+      <BeneathNavBarContainer>
+        <HotBulletinContainer>
+          <HotBulletinHeader>채팅 목록</HotBulletinHeader>
+        </HotBulletinContainer>
+        <ChatListIter data={chatList} />
+      </BeneathNavBarContainer>
     </div>
   );
 }
