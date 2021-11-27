@@ -3,13 +3,13 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import BulletImage from "../../images/bullet.svg";
 import SettingImage from "../../images/settings.png";
 import AskImage from "../../images/ask.svg";
+import theme from "../../images/theme.png";
 import { useHistory } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import globalAtom from "../../loginState";
 import "./sidebar.css";
 
 const StyledSidebar = styled.div`
-  background-color: #fd9f28;
   width: 100vw;
   height: 92vh;
   position: fixed;
@@ -34,7 +34,7 @@ const StyledDiv = styled.div`
 
 const StyledDiv2 = styled.div`
   display: flex;
-  width: 80vw;
+  width: 100vw;
   flex-direction: column;
 `;
 
@@ -64,8 +64,9 @@ const StyledUserInfo = styled.div`
   font-weight: bold;
 `;
 
-const onFailure = (response) => {
-  console.log(response);
+const onFailure = () => {
+  const modal = document.querySelector("#modal");
+  modal.style.display = "flex";
 };
 
 const Sidebar = (props) => {
@@ -117,11 +118,11 @@ const Sidebar = (props) => {
 
   return (
     <StyledSidebar className="sidebar" display={props}>
-      <StyledDiv>
+      {/* <StyledDiv>
         <StyledMenu src={SettingImage}></StyledMenu>
         <StyledMenu src={BulletImage}></StyledMenu>
         <StyledMenu src={AskImage}></StyledMenu>
-      </StyledDiv>
+      </StyledDiv> */}
       {loginInfo.isLogin === false ? (
         <StyledDiv2>
           <GoogleLogin clientId={process.env.REACT_APP_OAUTH_CLIENT_ID} buttonText="Login" onSuccess={googleLogin} onFailure={onFailure} className="google-login-btn" />
@@ -143,8 +144,8 @@ const Sidebar = (props) => {
       ) : (
         <StyledDiv2>
           <StyledUserInfo>닉네임: {loginInfo.nickname}</StyledUserInfo>
-          <StyledUserInfo>점수: 102 점</StyledUserInfo>
           <StyledUserInfo>등급: 브론즈</StyledUserInfo>
+          <StyledUserInfo>점수: 102 점</StyledUserInfo>
           <StyledSignIn onClick={logOut}>로그아웃</StyledSignIn>
         </StyledDiv2>
       )}

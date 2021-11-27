@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import globalAtom from "../../loginState";
 import CommonHeader from "../header";
+import NavBar from "../nav-bar";
 import ChatListIter from "./chat-list";
 import getId from "../utils/get-id";
 
@@ -86,6 +87,7 @@ function ChatList() {
   return (
     <div className="ChatLobby">
       <CommonHeader />
+      <NavBar menu="chat" />
       <HotBulletinContainer>
         <HotBulletinHeader>채팅 목록</HotBulletinHeader>
       </HotBulletinContainer>

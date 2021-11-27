@@ -34,10 +34,11 @@
 }
 
 .submit-btn-chat {
+  font-family: "one_mobile";
   margin: auto;
-  background-color: #4caf50;
+  background-color: #fd8f00;
   color: white;
-  padding: 12px 20px;
+  padding: 14px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -77,6 +78,7 @@
 }
 
 .chat-balloon {
+  font-family: "KoPubBold";
   position: relative;
   margin-left: 30px;
   margin-top: 5px;
@@ -99,6 +101,7 @@
 }
 
 .chat-balloon-my {
+  font-family: "KoPubBold";
   position: relative;
   align-self: end;
   line-height: 22px;

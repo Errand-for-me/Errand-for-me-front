@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import NavBar from "../nav-bar";
 
 import CommonHeader from "../header";
 import BulletList from "./bullet-list";
+import AdsArea from "../advertisement";
 import globalAtom from "../../loginState";
 import PlusImg from "../../images/plus.svg";
+import Modal from "../utils/modal/modal";
 
 const HotBulletinContainer = styled.div`
   width: 100vw;
@@ -53,7 +56,8 @@ function Board() {
       });
       const data = await result.json();
       if (data.name === null) {
-        alert("로그인 해주세요");
+        const modal = document.querySelector("#modal");
+        modal.style.display = "flex";
       } else {
         setLoginInfo({ isLogin: true, nickname: data.nickname });
         history.push("/bulletin/write");
@@ -80,10 +84,13 @@ function Board() {
 
   return (
     <div className="bullet-board">
+      <Modal />
       <StyledPlus src={PlusImg} onClick={WritePage} />
       <CommonHeader />
+      <NavBar menu="bulletin" />
       <HotBulletinContainer>
-        <HotBulletinHeader>전체 게시판!!</HotBulletinHeader>
+        <HotBulletinHeader>전체 게시판</HotBulletinHeader>
+        <AdsArea />
         <BulletList data={bulletList} />
       </HotBulletinContainer>
       <div></div>

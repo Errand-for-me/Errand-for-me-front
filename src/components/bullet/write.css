@@ -1,6 +1,42 @@
+.post-container {
+  margin: 20px;
+}
+
+.user-profile {
+  width: 46px;
+  height: 54px;
+  opacity: 0.3;
+}
+
+.user-info {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.writer-info-container {
+  margin: 10px;
+}
+
+.user-name {
+  font-family: "one_mobile";
+  margin-bottom: 5px;
+}
+
+.bulletin-title {
+  font-family: "one_mobile";
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.post-time {
+  color: gray;
+  font-size: 13px;
+}
+
 .submit-btn-delete {
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 20px;
   width: 50px;
   font-size: 12px;
   background-color: #fd8f00;

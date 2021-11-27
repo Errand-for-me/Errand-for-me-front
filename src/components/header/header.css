@@ -1,7 +1,7 @@
 .common-header {
   text-align: center;
   display: flex;
-  height: 8vh;
+  height: 65px;
   background-color: #fff3d3;
   color: white;
   position: -webkit-sticky;
@@ -10,9 +10,11 @@
 }
 
 .logo {
-  margin-top: -31px;
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100%;
+  background-image: url("../../images/logo.png");
+  background-size: 140px;
+  background-position: center center;
 }
 
 .back {

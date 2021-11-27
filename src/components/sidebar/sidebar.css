@@ -9,3 +9,9 @@
   text-align: center;
   border-radius: 15px;
 }
+
+.sidebar {
+  background-image: url("../../images/theme.png");
+  background-size: 100vw;
+  background-color: #ffd7a7;
+}

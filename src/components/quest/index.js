@@ -4,9 +4,11 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
 import globalAtom from "../../loginState";
+import NavBar from "../nav-bar";
 import CommonHeader from "../header";
 import PlusImg from "../../images/plus.svg";
 import QuestList from "./quest-list";
+import Modal from "../utils/modal/modal";
 
 const HotBulletinContainer = styled.div`
   width: 90vw;
@@ -55,7 +57,8 @@ function Quest() {
       });
       const data = await result.json();
       if (data.name === null) {
-        alert("로그인 해주세요");
+        const modal = document.querySelector("#modal");
+        modal.style.display = "flex";
       } else {
         setLoginInfo({ isLogin: true, nickname: data.nickname });
         history.push("/quest/write");
@@ -82,8 +85,10 @@ function Quest() {
 
   return (
     <div className="App">
+      <Modal />
       <StyledPlus src={PlusImg} onClick={WritePage} />
       <CommonHeader />
+      <NavBar menu="quest" />
       <HotBulletinContainer>
         <HotBulletinHeader>심부름 찾기</HotBulletinHeader>
       </HotBulletinContainer>

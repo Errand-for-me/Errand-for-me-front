@@ -1,9 +1,10 @@
-.container {
+.quest-container {
+  font-family: "one_mobile";
   display: flex;
   flex-direction: column;
 }
 
-.input-container {
+.quest-input-container {
   width: 80vw;
   margin: auto;
   margin-top: 20px;
@@ -58,9 +59,10 @@
   resize: none;
 }
 
-.submit-btn {
+.quest-submit-btn {
+  font-family: "one_mobile";
   margin: auto;
-  background-color: #4caf50;
+  background-color: #fd8f00;
   color: white;
   padding: 12px 20px;
   border: none;

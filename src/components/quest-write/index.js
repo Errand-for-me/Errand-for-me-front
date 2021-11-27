@@ -7,8 +7,8 @@ function QuestWrite() {
   return (
     <div className="write">
       <CommonHeader />
-      <form className="container" action={`${process.env.REACT_APP_SERVER_IP}/quest`} method="POST" encType="multipart/form-data">
-        <div className="input-container">
+      <form className="quest-container" action={`${process.env.REACT_APP_SERVER_IP}/quest`} method="POST" encType="multipart/form-data">
+        <div className="quest-input-container">
           제목
           <input className="head" id="head" name="title" type="text" placeholder="제목" />
         </div>
@@ -30,7 +30,7 @@ function QuestWrite() {
         </div>
         <div className="input-container">위치 지정하기</div>
         <MiniMap />
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="quest-submit-btn">
           글 쓰기
         </button>
       </form>

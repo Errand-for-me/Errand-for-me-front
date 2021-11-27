@@ -80,7 +80,7 @@ function ChatRoom(props) {
       <SubmitBox>
         <input className="head-chat" id="content" name="content" type="text" placeholder="입력하세요" />
         <button type="submit" className="submit-btn-chat" onClick={send}>
-          전송
+          전 송
         </button>
       </SubmitBox>
     </div>

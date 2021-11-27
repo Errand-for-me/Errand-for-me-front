@@ -1,0 +1,67 @@
+#modal.modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 4;
+}
+
+#modal .modal-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #fff3d3;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 80vw;
+  height: 20vh;
+  position: relative;
+  padding: 10px;
+  z-index: 5;
+}
+
+#modal .modal-title {
+  padding-left: 10px;
+  display: inline;
+  font-family: "one_mobile";
+  font-size: 25px;
+  text-align: center;
+}
+
+#modal .modal-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0px 10px;
+  text-shadow: 1px 1px 2px gray;
+  text-align: center;
+}
+
+.ok-container {
+}
+
+.ok-button {
+  margin: auto;
+  width: 20%;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  font-family: "one_mobile";
+  background-color: #fd8f00;
+  color: #ffffff;
+  box-shadow: 0 0 4px black;
+}

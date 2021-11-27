@@ -5,6 +5,11 @@
 
 @font-face {
   font-family: "KoPub";
+  src: url("fonts/KoPubWorld\ Dotum\ Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "KoPubBold";
   src: url("fonts/KoPubWorld\ Dotum_Pro\ Bold.otf") format("truetype");
 }
 

@@ -1,9 +1,10 @@
 import "./header.css";
-import logo from "../../images/logo.png";
 import back from "../../images/back.svg";
+import Hamburger from "../../images/hamburger.png";
 import { useHistory } from "react-router";
 
-const CommonHeader = () => {
+const CommonHeader = (props) => {
+  const { isMainPage, toggle } = props;
   const history = useHistory();
 
   const moveHome = () => {
@@ -16,8 +17,9 @@ const CommonHeader = () => {
 
   return (
     <div className="common-header">
-      <img className="back" src={back} onClick={goBack} />
-      <img className="logo" src={logo} onClick={moveHome} />
+      {isMainPage ? <img className="back" src={Hamburger} onClick={toggle} /> : <img className="back" src={back} onClick={goBack} />}
+
+      <div className="logo" onClick={moveHome} />
     </div>
   );
 };

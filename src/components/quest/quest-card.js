@@ -11,8 +11,10 @@ function QuestCard(props) {
 
   const RoutePage = async (id) => {
     const loginData = await getId();
-    if (loginData.isLogin === false) alert("로그인 해주세요.");
-    else history.push(`/quest/detail/${id}`);
+    if (loginData.isLogin === false) {
+      const modal = document.querySelector("#modal");
+      modal.style.display = "flex";
+    } else history.push(`/quest/detail/${id}`);
   };
 
   if (imageURL === null || imageURL === "") imageURL = "none.svg";
