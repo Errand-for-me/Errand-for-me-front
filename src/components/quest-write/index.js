@@ -18,11 +18,11 @@ function QuestWrite() {
         </div>
         <div className="input-container">
           인원 수
-          <input className="people-input" id="people" name="people" type="text" placeholder="인원" />
+          <input className="people-input" id="people" name="people" type="number" value="0" placeholder="인원" />
         </div>
         <div className="input-container">
           사례비
-          <input className="people-input" id="payment" name="payment" type="text" placeholder="사례비" />
+          <input className="people-input" id="payment" name="payment" type="number" value="0" placeholder="사례비" />
         </div>
         <div className="input-container">
           이미지

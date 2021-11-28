@@ -1,5 +1,6 @@
 /*global kakao*/
 import React, { useEffect } from "react";
+import "./quest-write.css";
 
 function MiniMap() {
   useEffect(() => {
@@ -47,8 +48,8 @@ function MiniMap() {
   return (
     <div className="minimap">
       <div id="mini-map" style={{ width: "80vw", height: "60vh", margin: "auto" }}></div>
-      <input id="lat" name="lat" type="hidden" value="" />
-      <input id="lng" name="lng" type="hidden" value="" />
+      <input id="lat" name="lat" type="number" value="0" />
+      <input id="lng" name="lng" type="number" value="0" />
     </div>
   );
 }

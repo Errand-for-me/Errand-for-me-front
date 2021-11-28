@@ -2,6 +2,14 @@
   font-family: "one_mobile";
 }
 
+#lat {
+  display: none;
+}
+
+#lng {
+  display: none;
+}
+
 .quest-container {
   display: flex;
   flex-direction: column;
