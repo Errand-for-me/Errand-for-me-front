@@ -4,17 +4,22 @@ import "./sign-up-google.css";
 import { useHistory } from "react-router";
 import { useSetRecoilState } from "recoil";
 import globalAtom from "../../loginState";
+import Modal from "../utils/modal/modal";
 
 function SignUpGooglePage() {
   const setLoginInfo = useSetRecoilState(globalAtom.user);
   const history = useHistory();
   useEffect(() => {
-    alert("회원가입이 필요합니다.");
+    document.body.style.overflow = "hidden";
+    const modal = document.querySelector("#modal");
+    modal.querySelector(".modal-title").innerHTML = "회원 가입!";
+    modal.querySelector(".modal-content").innerHTML = "회원 가입이 필요해요!";
+    modal.style.display = "flex";
   }, []);
 
   const send = async () => {
     const nickname = document.querySelector("#head").value;
-    await fetch(`${process.env.REACT_APP_SERVER_IP}/google-sign-in`, {
+    const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/google-sign-in`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,12 +30,22 @@ function SignUpGooglePage() {
       credentials: "include",
     });
 
-    setLoginInfo({ isLogin: true, nickname: nickname });
-    history.goBack();
+    const data = await result.text();
+    if (data === "true") {
+      setLoginInfo({ isLogin: true, nickname: nickname });
+      history.goBack();
+    } else {
+      document.body.style.overflow = "hidden";
+      const modal = document.querySelector("#modal");
+      modal.querySelector(".modal-title").innerHTML = "회원 가입 오류!";
+      modal.querySelector(".modal-content").innerHTML = "닉네임이 중복된 것 같아요!";
+      modal.style.display = "flex";
+    }
   };
 
   return (
     <div className="sign-up-write-google">
+      <Modal />
       <CommonHeader />
       <div className="input-container">
         닉네임

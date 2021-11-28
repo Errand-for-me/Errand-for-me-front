@@ -9,6 +9,8 @@ function Modal() {
       if (evTarget.classList.contains("modal-overlay")) {
         modal.style.display = "none";
         document.body.style.overflow = "";
+        modal.querySelector(".modal-title").innerHTML = "접근 불가!";
+        modal.querySelector(".modal-content").innerHTML = "로그인이 필요해요!";
       }
     });
   }, []);
@@ -17,6 +19,8 @@ function Modal() {
     const modal = document.querySelector("#modal");
     modal.style.display = "none";
     document.body.style.overflow = "";
+    modal.querySelector(".modal-title").innerHTML = "접근 불가!";
+    modal.querySelector(".modal-content").innerHTML = "로그인이 필요해요!";
   };
 
   return (
