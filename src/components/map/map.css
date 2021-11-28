@@ -1,3 +1,9 @@
+.map-area {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
 .customoverlay {
   position: relative;
   bottom: 85px;

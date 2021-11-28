@@ -29,6 +29,11 @@ function App() {
       }
     }
     fetchDate();
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
 
   return (

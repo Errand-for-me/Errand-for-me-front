@@ -73,8 +73,8 @@ function Map() {
   }, [questList]);
 
   return (
-    <div className="App">
-      <div id="map" style={{ width: "100vw", height: "50vh" }}></div>
+    <div className="map-area">
+      <div id="map" style={{ width: "100vw", flex: 1 }}></div>
     </div>
   );
 }
