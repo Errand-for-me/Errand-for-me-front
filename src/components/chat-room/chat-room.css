@@ -79,7 +79,6 @@
 
 .chat-balloon {
   font-family: "KoPubBold";
-  position: relative;
   margin-left: 30px;
   margin-top: 5px;
   line-height: 22px;
@@ -102,7 +101,6 @@
 
 .chat-balloon-my {
   font-family: "KoPubBold";
-  position: relative;
   align-self: end;
   line-height: 22px;
   padding: 6px;
