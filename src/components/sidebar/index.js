@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useHistory } from "react-router-dom";
-import GoogleLogin from "react-google-login";
 import globalAtom from "../../loginState";
 import "./sidebar.css";
 
@@ -11,21 +10,6 @@ const StyledSidebar = styled.div`
   position: fixed;
   z-index: 2;
   display: ${(props) => props.display.displayType};
-`;
-
-const StyledMenu = styled.img`
-  width: 36px;
-  height: 36px;
-  margin: 20px;
-  cursor: pointer;
-  filter: invert(100%);
-`;
-
-const StyledDiv = styled.div`
-  display: flex;
-  width: 20vw;
-  flex-direction: column;
-  background-color: rgb(32, 37, 64);
 `;
 
 const StyledDiv2 = styled.div`
@@ -60,11 +44,6 @@ const StyledUserInfo = styled.div`
   font-weight: bold;
 `;
 
-const onFailure = () => {
-  const modal = document.querySelector("#modal");
-  modal.style.display = "flex";
-};
-
 const Sidebar = (props) => {
   const loginInfo = useRecoilValue(globalAtom.user);
   const setLoginInfo = useSetRecoilState(globalAtom.user);
@@ -74,49 +53,10 @@ const Sidebar = (props) => {
     history.push(`/${url}`);
   };
 
-  const logOut = async () => {
-    await fetch(`${process.env.REACT_APP_SERVER_IP}/logOut`, {
-      method: "GET",
-      headers: {
-        "Conent-Type": "application/json",
-      },
-      credentials: "include",
-    });
-    setLoginInfo({ isLogin: false });
-    toggle("none");
-  };
-
-  const googleLogin = async (response) => {
-    const {
-      profileObj: { email, name },
-    } = response;
-
-    try {
-      const result = await fetch(`${process.env.REACT_APP_SERVER_IP}/sign-in-api?email=${email}&name=${name}`, {
-        method: "GET",
-        headers: {
-          "Conent-Type": "application/json",
-        },
-        credentials: "include",
-      });
-
-      const data = await result.json();
-      if (data.id === null) {
-        routePage("sign-up-google");
-      } else {
-        setLoginInfo({ isLogin: true, nickname: data.nickname });
-        toggle("none");
-      }
-    } catch (e) {
-      throw e;
-    }
-  };
-
   return (
     <StyledSidebar className="sidebar" display={props}>
       {loginInfo.isLogin === false ? (
         <StyledDiv2>
-          <GoogleLogin clientId={process.env.REACT_APP_OAUTH_CLIENT_ID} buttonText="Login" onSuccess={googleLogin} onFailure={onFailure} className="google-login-btn" />
           <StyledSignIn
             onClick={() => {
               routePage("sign-in");
@@ -137,7 +77,7 @@ const Sidebar = (props) => {
           <StyledUserInfo>닉네임: {loginInfo.nickname}</StyledUserInfo>
           <StyledUserInfo>등급: 브론즈</StyledUserInfo>
           <StyledUserInfo>점수: 102 점</StyledUserInfo>
-          <StyledSignIn onClick={logOut}>로그아웃</StyledSignIn>
+          {/* <StyledSignIn onClick={logOut}>로그아웃</StyledSignIn> */}
         </StyledDiv2>
       )}
     </StyledSidebar>

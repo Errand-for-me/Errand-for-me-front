@@ -59,6 +59,7 @@ function Quest() {
       });
       const data = await result.json();
       if (data.name === null) {
+        document.body.style.overflow = "hidden";
         const modal = document.querySelector("#modal");
         modal.style.display = "flex";
       } else {

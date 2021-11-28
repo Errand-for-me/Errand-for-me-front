@@ -8,6 +8,7 @@ function Modal() {
       const evTarget = e.target;
       if (evTarget.classList.contains("modal-overlay")) {
         modal.style.display = "none";
+        document.body.style.overflow = "";
       }
     });
   }, []);
@@ -15,6 +16,7 @@ function Modal() {
   const closeModal = () => {
     const modal = document.querySelector("#modal");
     modal.style.display = "none";
+    document.body.style.overflow = "";
   };
 
   return (

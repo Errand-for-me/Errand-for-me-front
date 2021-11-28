@@ -15,6 +15,7 @@ function QuestCard(props) {
   const RoutePage = async (id) => {
     const loginData = await getId();
     if (loginData.isLogin === false) {
+      document.body.style.overflow = "hidden";
       const modal = document.querySelector("#modal");
       modal.style.display = "flex";
     } else history.push(`/quest/detail/${id}`);

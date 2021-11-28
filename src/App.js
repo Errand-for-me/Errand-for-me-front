@@ -10,22 +10,7 @@ import getId from "./components/utils/get-id";
 import Modal from "./components/utils/modal/modal";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import globalAtom from "./loginState";
-
-const StyledHamburger = styled.img`
-  position: fixed;
-  padding: 10px;
-  margin: 20px;
-  margin-top: 85vh;
-  margin-left: 76vw;
-  padding-height: 60px;
-  background-color: white;
-  border-radius: 50px;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  box-shadow: 2px 5px 5px rgb(0 0 0 / 50%);
-  z-index: 3;
-`;
+import BeneathNavBarContainer from "./components/utils/beneath-nav-bar-template";
 
 function App() {
   const [SidebarState, toggleSidebarState] = useState("none");
@@ -51,12 +36,13 @@ function App() {
   return (
     <div className="App">
       <Modal />
-      {/* <StyledHamburger src={Hamburger} onClick={toggle} /> */}
       <CommonHeader isMainPage={true} toggle={toggle} />
       <NavBar />
-      <Sidebar displayType={SidebarState} toggle={toggleSidebarState} />
-      <AdsArea />
-      <Map />
+      <BeneathNavBarContainer>
+        <Sidebar displayType={SidebarState} toggle={toggleSidebarState} />
+        <AdsArea />
+        <Map />
+      </BeneathNavBarContainer>
     </div>
   );
 }

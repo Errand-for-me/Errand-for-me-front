@@ -62,6 +62,7 @@ function ChatList() {
       if (loginInfo.isLogin === false) {
         const result = await getId();
         if (result.isLogin === false) {
+          document.body.style.overflow = "hidden";
           const modal = document.querySelector("#modal");
           modal.style.display = "flex";
         }
