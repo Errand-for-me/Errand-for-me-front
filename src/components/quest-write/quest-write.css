@@ -82,6 +82,19 @@
   float: right;
 }
 
+.quest-submit-btn-inactivated {
+  font-family: "one_mobile";
+  font-size: 14px;
+  margin: auto;
+  background-color: lightgray;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
 .minimap {
   margin-top: 10px;
   margin-bottom: 20px;

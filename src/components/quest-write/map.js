@@ -2,7 +2,9 @@
 import React, { useEffect } from "react";
 import "./quest-write.css";
 
-function MiniMap() {
+function MiniMap(props) {
+  const { setMapInfo } = props;
+
   useEffect(() => {
     let container = document.getElementById("mini-map");
     const latField = document.querySelector("#lat");
@@ -33,6 +35,7 @@ function MiniMap() {
           const lng = mouseEvent.latLng.getLng();
           latField.value = lat;
           lngField.value = lng;
+          setMapInfo(true);
           // 마커를 클릭한 위치에 표시합니다
           marker.setPosition(mouseEvent.latLng);
           marker.setMap(map);
@@ -48,8 +51,8 @@ function MiniMap() {
   return (
     <div className="minimap">
       <div id="mini-map" style={{ width: "80vw", height: "60vh", margin: "auto" }}></div>
-      <input id="lat" name="lat" type="number" value="0" />
-      <input id="lng" name="lng" type="number" value="0" />
+      <input id="lat" name="lat" type="text" placeholder="0" />
+      <input id="lng" name="lng" type="text" placeholder="0" />
     </div>
   );
 }
