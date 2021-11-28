@@ -43,6 +43,8 @@ const StyledPlus = styled.div`
   z-index: 2;
 `;
 
+const regex = /(?<year>[0-9]+)-(?<month>[0-9]+)-(?<day>[0-9]+).+?(?<hour>[0-9]+):(?<min>[0-9]+)/;
+
 function Board() {
   const history = useHistory();
   const loginInfo = useRecoilValue(globalAtom.user);
@@ -80,7 +82,29 @@ function Board() {
       });
 
       const data = await result.json();
-      setBoard(data);
+
+      const proc_data = data.map((el) => {
+        const date = el.postTime;
+        const group = regex.exec(date).groups;
+        let { year, month, day, hour, min } = group;
+
+        hour = Number(hour) + 9;
+        let isDay = false;
+        if (hour >= 12) {
+          isDay = true;
+          if (hour > 12) hour -= 12;
+        }
+
+        return {
+          id: el.id,
+          writer: el.writer,
+          title: el.title,
+          content: el.content,
+          time: `${year.slice(2)}.${month}.${day} ${isDay ? "오후" : "오전"} ${hour}:${min}`,
+        };
+      });
+
+      setBoard(proc_data);
     }
 
     fetchData();

@@ -8,6 +8,8 @@ import profileImage from "../../images/profile.svg";
 import globalAtom from "../../loginState.js";
 import AdsArea from "../advertisement";
 
+const regex = /(?<year>[0-9]+)-(?<month>[0-9]+)-(?<day>[0-9]+).+?(?<hour>[0-9]+):(?<min>[0-9]+)/;
+
 function Bullet(props) {
   const history = useHistory();
   const { params } = props.match;
@@ -24,6 +26,17 @@ function Bullet(props) {
         mode: "cors",
       });
       const data = await result.json();
+      const group = regex.exec(data.postTime).groups;
+      let { year, month, day, hour, min } = group;
+
+      hour = Number(hour) + 9;
+      let isDay = false;
+      if (hour >= 12) {
+        isDay = true;
+        if (hour > 12) hour -= 12;
+      }
+
+      data.time = `${year.slice(2)}.${month}.${day} ${isDay ? "오후" : "오전"} ${hour}:${min}`;
 
       setBulletData(data);
     }
@@ -52,7 +65,7 @@ function Bullet(props) {
           <img className="user-profile" src={profileImage} />
           <div className="writer-info-container">
             <div className="user-name">{bulletData.writer}</div>
-            <div className="post-time">1시간 전</div>
+            <div className="post-time">{bulletData.time ? bulletData.time : "언제보냇누"}</div>
           </div>
         </div>
         <div className="bulletin-title">{bulletData.title}</div>

@@ -2,13 +2,6 @@ import React from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 
-const HotBulletinHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 10px;
-  font-weight: bold;
-`;
-
 const BulletListContainer = styled.div``;
 
 const HotBulletinContent = styled.div`
@@ -52,10 +45,6 @@ function BulletList(props) {
 
   return (
     <BulletListContainer>
-      {/* <HotBulletinHeader>
-        <div> 글 제목 </div>
-        <div> 작성자 </div>
-      </HotBulletinHeader> */}
       {data.map((val, idx) => (
         <HotBulletinContent
           key={idx}
@@ -66,7 +55,7 @@ function BulletList(props) {
           <Title> {val.title.length > 15 ? val.title.slice(0, 15) + "..." : val.title} </Title>
           <Preview> {val.content.length > 15 ? val.content.slice(0, 20) + "..." : val.content} </Preview>
           <Detail>
-            <Time> {`1시간 전`} </Time>
+            <Time> {val.time ? val.time : "언제보냇누"} </Time>
             <Writer> {val.writer} </Writer>
           </Detail>
         </HotBulletinContent>
