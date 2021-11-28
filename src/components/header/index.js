@@ -94,8 +94,8 @@ const CommonHeader = (props) => {
   };
 
   return (
-    <>
-      <div className="common-header">
+    <div className="common-header">
+      <div className="header-container">
         {isMainPage ? <img className="back" src={Hamburger} onClick={toggle} /> : <img className="back" src={back} onClick={goBack} />}
         <div className="logo" onClick={moveHome} />
         {loginInfo.isLogin ? (
@@ -118,7 +118,7 @@ const CommonHeader = (props) => {
         )}
       </div>
       <NavBar menu={menu} />
-    </>
+    </div>
   );
 };
 

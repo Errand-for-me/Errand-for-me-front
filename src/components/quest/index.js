@@ -4,18 +4,16 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
 import globalAtom from "../../loginState";
-import NavBar from "../nav-bar";
 import CommonHeader from "../header";
 import QuestList from "./quest-list";
 import Modal from "../utils/modal/modal";
 import AdsArea from "../advertisement";
-import BeneathNavBarContainer from "../utils/beneath-nav-bar-template";
 
 const HotBulletinContainer = styled.div`
   width: 90vw;
   text-align: center;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 5px;
   padding-top: 10px;
 `;
 
@@ -93,14 +91,11 @@ function Quest() {
       <Modal />
       <StyledPlus onClick={WritePage}>등록하기</StyledPlus>
       <CommonHeader menu="quest" />
-      {/* <NavBar menu="quest" /> */}
-      <BeneathNavBarContainer>
-        <HotBulletinContainer>
-          <HotBulletinHeader>심부름 찾기</HotBulletinHeader>
-        </HotBulletinContainer>
-        <AdsArea />
-        <QuestList data={questList} />
-      </BeneathNavBarContainer>
+      <HotBulletinContainer>
+        <HotBulletinHeader>심부름 찾기</HotBulletinHeader>
+      </HotBulletinContainer>
+      <AdsArea />
+      <QuestList data={questList} />
     </div>
   );
 }

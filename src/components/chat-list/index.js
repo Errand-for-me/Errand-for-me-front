@@ -5,8 +5,6 @@ import styled from "styled-components";
 import Modal from "../utils/modal/modal";
 import globalAtom from "../../loginState";
 import CommonHeader from "../header";
-import NavBar from "../nav-bar";
-import BeneathNavBarContainer from "../utils/beneath-nav-bar-template";
 import ChatListIter from "./chat-list";
 import getId from "../utils/get-id";
 
@@ -14,7 +12,7 @@ const HotBulletinContainer = styled.div`
   width: 100vw;
   text-align: center;
   margin: auto;
-  margin-top: 25px;
+  margin-top: 10px;
   padding-top: 10px;
   padding-bottom: 15px;
   border-bottom: solid 1px lightgray;
@@ -77,13 +75,10 @@ function ChatList() {
     <div className="ChatLobby">
       <Modal />
       <CommonHeader menu="chat" />
-      {/* <NavBar menu="chat" /> */}
-      <BeneathNavBarContainer>
-        <HotBulletinContainer>
-          <HotBulletinHeader>채팅 목록</HotBulletinHeader>
-        </HotBulletinContainer>
-        <ChatListIter data={chatList} />
-      </BeneathNavBarContainer>
+      <HotBulletinContainer>
+        <HotBulletinHeader>채팅 목록</HotBulletinHeader>
+      </HotBulletinContainer>
+      <ChatListIter data={chatList} />
     </div>
   );
 }

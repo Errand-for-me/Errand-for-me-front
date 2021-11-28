@@ -5,7 +5,6 @@ import CommonHeader from "./components/header";
 import Sidebar from "./components/sidebar";
 import AdsArea from "./components/advertisement";
 import Map from "./components/map";
-import NavBar from "./components/nav-bar";
 import getId from "./components/utils/get-id";
 import Modal from "./components/utils/modal/modal";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -40,12 +39,9 @@ function App() {
     <div className="App">
       <Modal />
       <CommonHeader isMainPage={true} toggle={toggle} />
-      <NavBar />
-      <BeneathNavBarContainer>
-        <Sidebar displayType={SidebarState} toggle={toggleSidebarState} />
-        <AdsArea />
-        <Map />
-      </BeneathNavBarContainer>
+      <Sidebar displayType={SidebarState} toggle={toggleSidebarState} />
+      <AdsArea />
+      <Map />
     </div>
   );
 }

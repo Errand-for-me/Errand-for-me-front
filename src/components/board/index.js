@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import NavBar from "../nav-bar";
 
 import CommonHeader from "../header";
 import BulletList from "./bullet-list";
@@ -14,7 +13,7 @@ import BeneathNavBarContainer from "../utils/beneath-nav-bar-template";
 const HotBulletinContainer = styled.div`
   width: 100vw;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 5px;
   padding-top: 10px;
 `;
 
@@ -117,14 +116,11 @@ function Board() {
       <Modal />
       <StyledPlus onClick={WritePage}>글 쓰기</StyledPlus>
       <CommonHeader menu="bulletin" />
-      {/* <NavBar menu="bulletin" /> */}
-      <BeneathNavBarContainer>
-        <HotBulletinContainer>
-          <HotBulletinHeader>전체 게시판</HotBulletinHeader>
-          <AdsArea />
-          <BulletList data={bulletList} />
-        </HotBulletinContainer>
-      </BeneathNavBarContainer>
+      <HotBulletinContainer>
+        <HotBulletinHeader>전체 게시판</HotBulletinHeader>
+        <AdsArea />
+        <BulletList data={bulletList} />
+      </HotBulletinContainer>
     </div>
   );
 }

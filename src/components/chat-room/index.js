@@ -78,7 +78,7 @@ function ChatRoom(props) {
       </HotBulletinContainer>
       <ChatContainer questTitle={questTitle} />
       <SubmitBox>
-        <input className="head-chat" id="content" name="content" type="text" placeholder="입력하세요" />
+        <input className="head-chat" id="content" name="content" type="text" autocomplete="off" placeholder="입력하세요" />
         <button type="submit" className="submit-btn-chat" onClick={send}>
           전 송
         </button>

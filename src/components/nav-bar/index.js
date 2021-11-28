@@ -8,7 +8,6 @@ const ButtonsContainer = styled.div`
   background-color: #ffffff;
   height: 64px;
   display: flex;
-  position: fixed;
   justify-content: space-evenly;
   font-size: 20px;
   font-family: "one_mobile";
