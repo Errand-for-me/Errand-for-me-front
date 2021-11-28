@@ -1,5 +1,6 @@
 .quest-card {
   display: flex;
+  font-family: "one_mobile";
   margin: 10px;
   background-color: #e9ecef;
   border-radius: 10px;

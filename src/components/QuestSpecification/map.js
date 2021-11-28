@@ -40,7 +40,7 @@ function MiniMap(props) {
 
   return (
     <div className="minimap">
-      <div id="mini-map" style={{ width: "80vw", height: "80vh", margin: "auto" }}></div>
+      <div id="mini-map" style={{ width: "80vw", height: "60vh", margin: "auto" }}></div>
       <input id="lat" name="lat" type="hidden" value="" />
       <input id="lng" name="lng" type="hidden" value="" />
     </div>

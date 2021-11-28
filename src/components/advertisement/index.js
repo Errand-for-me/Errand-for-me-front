@@ -9,6 +9,7 @@ const Ads = styled.div`
   size: 20px;
   margin: auto;
   padding-top: 5px;
+  padding-bottom: 5px;
   border-radius: 5px;
 `;
 

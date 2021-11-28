@@ -59,7 +59,7 @@ function Bullet(props) {
 
   return (
     <div className="bullet">
-      <CommonHeader path="bulletin" />
+      <CommonHeader path="bulletin" menu="bulletin" />
       <div className="post-container">
         <div className="user-info">
           <img className="user-profile" src={profileImage} />

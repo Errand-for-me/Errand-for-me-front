@@ -1,5 +1,8 @@
-.quest-container {
+.quest-write {
   font-family: "one_mobile";
+}
+
+.quest-container {
   display: flex;
   flex-direction: column;
 }

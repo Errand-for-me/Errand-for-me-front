@@ -5,7 +5,7 @@ import "./write.css";
 function BulletinWrite() {
   return (
     <div className="write">
-      <CommonHeader path="bulletin" />
+      <CommonHeader path="bulletin" menu="bulletin" />
       <form className="container" action={`${process.env.REACT_APP_SERVER_IP}/board`} method="POST">
         <div className="input-container">
           <input className="bullet-head" id="head" name="title" type="text" placeholder="제목" />

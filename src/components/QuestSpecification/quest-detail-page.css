@@ -1,3 +1,7 @@
+.quest-detail {
+  font-family: "one_mobile";
+}
+
 .container-quest-detail {
   display: flex;
   flex-direction: column;

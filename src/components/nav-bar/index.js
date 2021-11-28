@@ -12,6 +12,7 @@ const ButtonsContainer = styled.div`
   font-size: 20px;
   font-family: "one_mobile";
   box-shadow: 0 9px 7px -3px lightgrey;
+  z-index: 5;
 `;
 
 const StyledMenuNotSelected = styled.div`

@@ -8,7 +8,6 @@ import BulletList from "./bullet-list";
 import AdsArea from "../advertisement";
 import globalAtom from "../../loginState";
 import Modal from "../utils/modal/modal";
-import BeneathNavBarContainer from "../utils/beneath-nav-bar-template";
 
 const HotBulletinContainer = styled.div`
   width: 100vw;
@@ -31,7 +30,7 @@ const StyledPlus = styled.div`
   position: fixed;
   padding: 10px;
   margin: 20px;
-  margin-top: 19vh;
+  margin-top: 140px;
   margin-left: 71vw;
   border: solid 3px #fd8f00;
   border-radius: 20px;

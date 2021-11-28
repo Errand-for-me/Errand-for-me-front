@@ -58,8 +58,8 @@ function QuestDetail(props) {
   }, []);
 
   return (
-    <div className="write">
-      <CommonHeader path="quest" />
+    <div className="quest-detail">
+      <CommonHeader path="quest" menu="quest" />
       <div className="input-container-quest-detail">
         제목
         <div className="head-quest-detail" id="head" name="title">

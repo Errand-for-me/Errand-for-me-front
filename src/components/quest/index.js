@@ -30,7 +30,7 @@ const StyledPlus = styled.div`
   position: fixed;
   padding: 10px;
   margin: 20px;
-  margin-top: 19vh;
+  margin-top: 140px;
   margin-left: 71vw;
   border: solid 3px #fd8f00;
   border-radius: 20px;

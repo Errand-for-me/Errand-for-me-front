@@ -72,7 +72,7 @@ function ChatRoom(props) {
 
   return (
     <div className="ChatRoom">
-      <CommonHeader path="chat" />
+      <CommonHeader path="chat" menu="chat" />
       <HotBulletinContainer>
         <HotBulletinHeader>채팅</HotBulletinHeader>
       </HotBulletinContainer>
