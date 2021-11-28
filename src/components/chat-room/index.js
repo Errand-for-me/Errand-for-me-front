@@ -44,20 +44,22 @@ function ChatRoom(props) {
   const send = async () => {
     const element = document.querySelector("#content");
     const content = element.value;
-    element.value = "";
-    await fetch(`${process.env.REACT_APP_SERVER_IP}/chat`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        content: content,
-        sender: myName,
-        receiver: toId,
-        questTitle: questTitle,
-      }),
-      credentials: "include",
-    });
+    if (element.value !== "") {
+      element.value = "";
+      await fetch(`${process.env.REACT_APP_SERVER_IP}/chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: content,
+          sender: myName,
+          receiver: toId,
+          questTitle: questTitle,
+        }),
+        credentials: "include",
+      });
+    }
   };
 
   useEffect(() => {
