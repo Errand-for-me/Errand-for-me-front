@@ -32,7 +32,7 @@ const StyledPlus = styled.div`
   position: fixed;
   padding: 10px;
   margin: 20px;
-  margin-top: 18.5vh;
+  margin-top: 19vh;
   margin-left: 71vw;
   border: solid 3px #fd8f00;
   border-radius: 20px;
@@ -116,8 +116,8 @@ function Board() {
     <div className="bullet-board">
       <Modal />
       <StyledPlus onClick={WritePage}>글 쓰기</StyledPlus>
-      <CommonHeader />
-      <NavBar menu="bulletin" />
+      <CommonHeader menu="bulletin" />
+      {/* <NavBar menu="bulletin" /> */}
       <BeneathNavBarContainer>
         <HotBulletinContainer>
           <HotBulletinHeader>전체 게시판</HotBulletinHeader>

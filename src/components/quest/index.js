@@ -32,7 +32,7 @@ const StyledPlus = styled.div`
   position: fixed;
   padding: 10px;
   margin: 20px;
-  margin-top: 18.5vh;
+  margin-top: 19vh;
   margin-left: 71vw;
   border: solid 3px #fd8f00;
   border-radius: 20px;
@@ -92,8 +92,8 @@ function Quest() {
     <div className="App">
       <Modal />
       <StyledPlus onClick={WritePage}>등록하기</StyledPlus>
-      <CommonHeader />
-      <NavBar menu="quest" />
+      <CommonHeader menu="quest" />
+      {/* <NavBar menu="quest" /> */}
       <BeneathNavBarContainer>
         <HotBulletinContainer>
           <HotBulletinHeader>심부름 찾기</HotBulletinHeader>

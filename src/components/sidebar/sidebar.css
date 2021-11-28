@@ -1,5 +1,6 @@
 .sidebar {
   background-image: url("../../images/theme.png");
+  background-position: center center;
   background-size: 100vw;
   background-color: #ffd7a7;
   width: 100vw;

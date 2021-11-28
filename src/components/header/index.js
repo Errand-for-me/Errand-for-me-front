@@ -7,6 +7,7 @@ import globalAtom from "../../loginState";
 import { useHistory } from "react-router";
 import getId from "../utils/get-id";
 import GoogleLogin from "react-google-login";
+import NavBar from "../nav-bar";
 
 const onFailure = () => {
   const modal = document.querySelector("#modal");
@@ -14,7 +15,7 @@ const onFailure = () => {
 };
 
 const CommonHeader = (props) => {
-  const { isMainPage, path, toggle } = props;
+  const { isMainPage, path, toggle, menu } = props;
   const history = useHistory();
   const loginInfo = useRecoilValue(globalAtom.user);
   const setLoginInfo = useSetRecoilState(globalAtom.user);
@@ -44,6 +45,7 @@ const CommonHeader = (props) => {
       credentials: "include",
     });
     setLoginInfo({ isLogin: false });
+    history.push("/");
   };
 
   const routePage = (url) => {
@@ -92,28 +94,31 @@ const CommonHeader = (props) => {
   };
 
   return (
-    <div className="common-header">
-      {isMainPage ? <img className="back" src={Hamburger} onClick={toggle} /> : <img className="back" src={back} onClick={goBack} />}
-      <div className="logo" onClick={moveHome} />
-      {loginInfo.isLogin ? (
-        <button className="custom-login-btn" onClick={logOut}>
-          로그아웃
-        </button>
-      ) : (
-        <GoogleLogin
-          clientId={process.env.REACT_APP_OAUTH_CLIENT_ID}
-          render={(renderProps) => (
-            <button className="custom-login-btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>
-              로그인
-            </button>
-          )}
-          buttonText="Login"
-          onSuccess={googleLogin}
-          onFailure={onFailure}
-          className="google-login-btn"
-        />
-      )}
-    </div>
+    <>
+      <div className="common-header">
+        {isMainPage ? <img className="back" src={Hamburger} onClick={toggle} /> : <img className="back" src={back} onClick={goBack} />}
+        <div className="logo" onClick={moveHome} />
+        {loginInfo.isLogin ? (
+          <button className="custom-login-btn" onClick={logOut}>
+            로그아웃
+          </button>
+        ) : (
+          <GoogleLogin
+            clientId={process.env.REACT_APP_OAUTH_CLIENT_ID}
+            render={(renderProps) => (
+              <button className="custom-login-btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                로그인
+              </button>
+            )}
+            buttonText="Login"
+            onSuccess={googleLogin}
+            onFailure={onFailure}
+            className="google-login-btn"
+          />
+        )}
+      </div>
+      <NavBar menu={menu} />
+    </>
   );
 };
 

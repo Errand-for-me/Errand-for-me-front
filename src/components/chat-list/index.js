@@ -76,8 +76,8 @@ function ChatList() {
   return (
     <div className="ChatLobby">
       <Modal />
-      <CommonHeader />
-      <NavBar menu="chat" />
+      <CommonHeader menu="chat" />
+      {/* <NavBar menu="chat" /> */}
       <BeneathNavBarContainer>
         <HotBulletinContainer>
           <HotBulletinHeader>채팅 목록</HotBulletinHeader>
