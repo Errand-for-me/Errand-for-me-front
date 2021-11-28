@@ -16,12 +16,14 @@ const HotBulletinContainer = styled.div`
   text-align: center;
   margin: auto;
   margin-top: 20px;
+  padding-top: 10px;
 `;
 
 const HotBulletinHeader = styled.div`
   margin: 10px;
   font-size: 20px;
   font-weight: bold;
+  margin-bottom: 15px;
 `;
 
 const StyledPlus = styled.div`

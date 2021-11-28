@@ -15,6 +15,7 @@ const HotBulletinContainer = styled.div`
   width: 100vw;
   margin: auto;
   margin-top: 20px;
+  padding-top: 10px;
 `;
 
 const HotBulletinHeader = styled.div`
@@ -22,6 +23,7 @@ const HotBulletinHeader = styled.div`
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 15px;
 `;
 
 const StyledPlus = styled.div`

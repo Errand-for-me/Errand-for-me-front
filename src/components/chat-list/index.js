@@ -15,6 +15,7 @@ const HotBulletinContainer = styled.div`
   text-align: center;
   margin: auto;
   margin-top: 25px;
+  padding-top: 10px;
   padding-bottom: 15px;
   border-bottom: solid 1px lightgray;
 `;

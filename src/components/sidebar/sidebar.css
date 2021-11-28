@@ -2,4 +2,19 @@
   background-image: url("../../images/theme.png");
   background-size: 100vw;
   background-color: #ffd7a7;
+  width: 100vw;
+  height: 92vh;
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  left: -100%;
+  -webkit-transition: left 0.5s;
+  -moz-transition: left 0.5s;
+  -ms-transition: left 0.5s;
+  -o-transition: left 0.5s;
+  transition: left 0.5s;
+}
+
+.sidebar.on {
+  left: 0;
 }

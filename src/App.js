@@ -12,6 +12,10 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import globalAtom from "./loginState";
 import BeneathNavBarContainer from "./components/utils/beneath-nav-bar-template";
 
+const toggle = () => {
+  document.querySelector(".sidebar").classList.toggle("on");
+};
+
 function App() {
   const [SidebarState, toggleSidebarState] = useState("none");
   const setLoginInfo = useSetRecoilState(globalAtom.user);
@@ -26,12 +30,6 @@ function App() {
     }
     fetchDate();
   }, []);
-
-  const toggle = () => {
-    if (SidebarState === "none") {
-      toggleSidebarState("flex");
-    } else toggleSidebarState("none");
-  };
 
   return (
     <div className="App">
