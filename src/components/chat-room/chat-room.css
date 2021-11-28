@@ -72,7 +72,8 @@
 .time-container-my {
   margin-right: 30px;
   margin-top: 10px;
-  float: right;
+  margin-left: 40vw;
+  align-self: end;
   font-size: 10px;
   font-weight: bold;
 }
@@ -91,10 +92,11 @@
 
 .chat-balloon-my {
   font-family: "KoPubBold";
-  float: right;
+  align-self: end;
   line-height: 22px;
   padding: 6px;
   margin-right: 15px;
+  margin-left: 40vw;
   margin-top: 5px;
   width: 50vw;
   background: #ffeb3b;
